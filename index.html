@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清流县总医院 · 智慧治未病系统整体解决方案（打印版）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root{--i:#0F1B30;--g:#C8A45C;--j:#4A8B7A;--m:#888;--bg:#FFFFFF;--cb:#F8F6F1;--line:#E8E3D8;--sg:rgba(200,164,92,.15);}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans SC','Inter',sans-serif;font-size:14px;color:#555;background:#F5F3EE;line-height:1.7;}
+
+/* ===== TOP BANNER ===== */
+.topbar{height:80px;background:linear-gradient(135deg,var(--i) 0%,#1A2744 100%);border-bottom:2px solid var(--g);position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;padding:0 36px;box-shadow:0 2px 16px rgba(0,0,0,.08);}
+.topbar::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:linear-gradient(90deg,transparent,var(--g) 20%,var(--g) 80%,transparent);}
+.topbar-inner{display:flex;align-items:center;gap:20px;width:100%;}
+.topbar-logo{width:42px;height:42px;border:2px solid var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:900;color:var(--g);flex-shrink:0;}
+.topbar-title{display:flex;flex-direction:column;}
+.topbar-title-zh{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:3px;line-height:1.2;}
+.topbar-title-en{font-size:10px;color:var(--g);letter-spacing:4px;margin-top:3px;font-weight:400;}
+.topbar-divider{width:1px;height:40px;background:rgba(200,164,92,.35);}
+.topbar-doc{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:3px;}
+.topbar-doc-en{font-size:10px;color:var(--g);letter-spacing:2px;margin-top:3px;}
+.topbar-tags{display:flex;gap:7px;margin-left:auto;}
+.topbar-tag{padding:5px 14px;background:rgba(200,164,92,.08);border:1.5px solid var(--g);color:var(--g);font-size:11px;letter-spacing:1px;border-radius:20px;font-weight:500;}
+.topbar-meta{font-size:10px;color:var(--m);letter-spacing:2px;opacity:.6;}
+
+/* ===== LAYOUT ===== */
+.wrap{display:flex;min-height:calc(100vh - 80px);margin-top:80px;}
+.sidebar{width:260px;flex-shrink:0;background:#FFFFFF;border-right:1px solid var(--line);position:fixed;top:80px;left:0;height:calc(100vh - 80px);overflow-y:auto;padding:20px 16px;z-index:100;}
+.sidebar-header{padding-bottom:14px;border-bottom:2px solid var(--g);margin-bottom:14px;}
+.sidebar-header .logo{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:var(--i);letter-spacing:1px;}
+.sidebar-header .logo-sub{font-size:9px;color:var(--g);letter-spacing:3px;margin-top:3px;}
+
+.sidebar-nav{list-style:none;}
+.sidebar-nav li{margin:0;}
+.sidebar-nav a{display:block;padding:6px 12px;font-size:12px;color:#777;text-decoration:none;border-radius:4px;transition:all .2s;font-weight:400;line-height:1.4;position:relative;}
+.sidebar-nav a:hover{background:var(--cb);color:var(--i);}
+.sidebar-nav a.active{background:var(--cb);color:var(--g);font-weight:600;border-left:3px solid var(--g);padding-left:9px;}
+.sidebar-nav .chapter-title{font-size:11px;color:var(--g);font-weight:600;letter-spacing:2px;padding:12px 12px 4px;margin-top:4px;border-top:1px dashed var(--line);}
+.sidebar-nav .chapter-title:first-child{margin-top:0;border-top:none;}
+
+.main{flex:1;margin-left:260px;padding:48px 60px 80px;max-width:1060px;}
+.main section{margin-bottom:56px;padding-bottom:40px;border-bottom:1px solid var(--line);}
+.main section:last-child{border-bottom:none;}
+
+/* ===== SECTION HEADER (from PPT) ===== */
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.sh-tag{padding:3px 10px;background:var(--i);color:var(--g);font-size:10px;letter-spacing:3px;font-weight:600;border-radius:2px;}
+.sh-num{font-size:10px;color:var(--m);letter-spacing:2px;font-family:'Inter';font-weight:600;}
+.sh-label{font-size:11px;color:var(--m);letter-spacing:3px;font-weight:500;}
+.sh-label b{color:var(--i);font-weight:700;font-size:12px;letter-spacing:1px;}
+
+.h-main{font-family:'Noto Serif SC',serif;font-size:30px;font-weight:700;color:var(--i);line-height:1.25;letter-spacing:1.5px;margin:8px 0 4px;}
+.h-sub{font-size:13px;color:var(--m);font-weight:400;letter-spacing:1px;margin-bottom:14px;}
+.gl-line{width:50px;height:2px;background:linear-gradient(90deg,var(--g),transparent);margin:8px 0 16px;border-radius:1px;}
+
+/* ===== HEADINGS ===== */
+.main h1{display:none;}
+.main h2{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:700;color:var(--i);margin:0 0 10px;padding:0;border:none;letter-spacing:1px;}
+.main h3{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:600;color:var(--i);margin:20px 0 8px;letter-spacing:.5px;}
+.main h4{font-size:13px;font-weight:600;color:var(--g);margin:16px 0 6px;letter-spacing:1px;}
+.main p{margin-bottom:10px;line-height:1.75;font-size:13.5px;color:#555;}
+.main strong{color:var(--i);font-weight:600;}
+
+/* ===== CARDS (from PPT style) ===== */
+.card-grid{display:grid;gap:12px;margin:14px 0;}
+.cg2{grid-template-columns:1fr 1fr;}
+.cg3{grid-template-columns:1fr 1fr 1fr;}
+.cg4{grid-template-columns:1fr 1fr 1fr 1fr;}
+.cg5{grid-template-columns:repeat(5,1fr);}
+.cg6{grid-template-columns:repeat(6,1fr);}
+
+.card{background:#FFFFFF;border:1px solid var(--line);border-radius:6px;padding:16px 18px;transition:.2s;box-shadow:none;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--g);border-radius:6px 0 0 6px;opacity:0;transition:.25s;}
+.card:hover{box-shadow:0 4px 14px rgba(200,164,92,.06);border-color:rgba(200,164,92,.3);}
+.card:hover::before{opacity:1;}
+.card.highlight{border-color:rgba(200,164,92,.3);background:#FFFCF5;}
+.card.highlight::before{opacity:1;}
+.card .card-icon{font-size:20px;margin-bottom:4px;display:inline-block;}
+.card .card-num{font-family:'Noto Serif SC',serif;font-size:30px;font-weight:900;color:var(--g);margin-bottom:4px;line-height:1;}
+.card .card-title{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:600;color:var(--i);margin-bottom:6px;}
+.card .card-desc{font-size:13px;color:#666;line-height:1.55;}
+
+/* ===== KPI big numbers (from PPT) ===== */
+.stat-row{display:flex;align-items:center;gap:24px;padding:16px 22px;background:var(--cb);border-radius:8px;border:1px solid rgba(200,164,92,.18);margin:12px 0;}
+.stat-row .item{display:flex;flex-direction:column;flex:1;}
+.stat-row .kv{font-family:'Noto Serif SC';font-size:36px;font-weight:900;color:var(--g);line-height:1;}
+.stat-row .kl{font-size:11px;color:var(--m);letter-spacing:2px;margin-top:4px;}
+.stat-row .sep{width:1px;height:32px;background:rgba(200,164,92,.25);}
+
+/* ===== Callout ===== */
+.callout{border-left:4px solid var(--j);background:rgba(74,139,122,.05);padding:14px 18px;margin:16px 0;border-radius:0 6px 6px 0;font-size:13px;color:var(--j);}
+.callout.gold{border-color:var(--g);background:rgba(200,164,92,.06);color:var(--i);}
+
+/* ===== TABLE ===== */
+.tbl-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+thead th{background:var(--i);color:#fff;padding:10px 14px;text-align:left;font-weight:600;letter-spacing:1px;}
+thead th.gold{color:var(--g);}
+tbody td{padding:9px 14px;border-bottom:1px solid var(--line);font-size:12px;color:#555;}
+tbody tr:nth-child(even){background:var(--cb);}
+tbody td.hl{color:var(--g);font-weight:600;}
+
+/* ===== PROCESS ===== */
+.proc{display:flex;gap:8px;margin:14px 0;}
+.proc-step{flex:1;background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px 10px;text-align:center;position:relative;overflow:hidden;}
+.proc-step::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--g);opacity:0;}
+.proc-step:nth-child(1)::after,.proc-step:last-child::after{opacity:1;}
+.proc-step .ps-num{font-size:10px;color:var(--g);font-weight:600;letter-spacing:2px;}
+.proc-step .ps-title{font-size:13px;font-weight:600;color:var(--i);margin:3px 0;}
+.proc-step .ps-desc{font-size:11px;color:#888;line-height:1.4;}
+.proc-step.hl{border-color:var(--g);border-width:1.5px;box-shadow:0 2px 8px rgba(200,164,92,.08);}
+.proc-step.hl .ps-title{color:var(--g);}
+
+/* ===== KPI ===== */
+.kpis{display:flex;gap:30px;margin:20px 0;flex-wrap:wrap;justify-content:center;}
+.kpi{text-align:center;min-width:120px;}
+.kpi .kv{font-family:'Noto Serif SC',serif;font-size:38px;font-weight:900;color:var(--i);line-height:1.1;}
+.kpi .kl{font-size:11px;color:var(--g);font-weight:500;letter-spacing:2px;margin-top:4px;}
+.kpi .ks{font-size:10px;color:var(--m);margin-top:2px;}
+
+/* ===== ARCH ===== */
+.arch{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;margin:16px 0;}
+.arch-layer{border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin-bottom:8px;background:var(--cb);}
+.arch-layer.l1{border-color:var(--g);border-width:1.5px;}
+.arch-layer.l4{border-color:var(--j);border-width:1.5px;background:rgba(74,139,122,.03);}
+.arch-layer-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.arch-layer-num{width:26px;height:26px;border:2px solid var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Inter';font-weight:700;font-size:11px;color:var(--g);flex-shrink:0;}
+.arch-layer.l4 .arch-layer-num{border-color:var(--j);color:var(--j);}
+.arch-layer-name{font-weight:700;font-size:14px;color:var(--i);}
+.arch-layer-tag{display:inline-block;padding:2px 8px;background:var(--g);color:#fff;font-size:9px;font-weight:600;border-radius:3px;margin-left:8px;}
+.arch-comps{display:grid;gap:6px;}
+.arch-comp{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:4px;}
+.arch-comp .ac-title{font-size:12px;font-weight:600;color:var(--i);margin-bottom:2px;}
+.arch-comp .ac-desc{font-size:11px;color:#888;line-height:1.4;}
+.arch-arrow{text-align:center;color:var(--g);font-size:14px;padding:4px 0;letter-spacing:2px;}
+
+/* ===== PRICE ===== */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.price-card{background:#FFFFFF;border:1px solid var(--line);border-radius:8px;padding:24px 20px;text-align:center;position:relative;overflow:hidden;}
+.price-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--g);opacity:0;}
+.price-card:hover::before{opacity:1;}
+.price-card.feat{background:linear-gradient(135deg,rgba(200,164,92,.08),rgba(200,164,92,.03));border:2px solid var(--g);}
+.price-card .pn{font-family:'Noto Serif SC',serif;font-size:16px;color:var(--g);font-weight:700;letter-spacing:1px;}
+.price-card .ps{font-size:12px;color:var(--m);margin:4px 0 10px;}
+.price-card .price-tbl{width:100%;border-collapse:collapse;margin:10px 0;}
+.price-card .price-tbl th{background:rgba(200,164,92,.06);color:var(--i);font-weight:600;font-size:12px;padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);}
+.price-card .price-tbl th:nth-child(2){text-align:center;}
+.price-card .price-tbl th:last-child{text-align:right;}
+.price-card .price-tbl td{padding:7px 8px;border-bottom:1px solid rgba(232,227,216,.5);font-size:12px;color:var(--i);text-align:left;}
+.price-card .price-tbl td:nth-child(2){text-align:center;}
+.price-card .price-tbl td:last-child{text-align:right;font-weight:600;color:var(--g);}
+.price-card.feat .price-tbl td{color:var(--i);}
+.price-card .price-tbl td b{color:var(--g);font-weight:700;}
+.price-card .price-tbl tfoot td{background:rgba(200,164,92,.05);border-top:2px solid var(--g);padding-top:10px;}
+
+/* ===== WHY US ===== */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0;}
+.why-item{background:#fff;border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start;transition:.2s;}
+.why-item:hover{border-color:rgba(200,164,92,.3);}
+.why-num{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:900;color:var(--g);opacity:.6;line-height:1;flex-shrink:0;}
+.why-icon{font-size:20px;margin-bottom:4px;}
+.why-title{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:var(--i);margin-bottom:6px;}
+.why-desc{font-size:12px;color:#666;line-height:1.55;}
+
+/* ===== PRODUCT ARCH ===== */
+.prod-arch{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;margin:16px 0;}
+.prod-layer{border:1px solid var(--line);border-radius:6px;padding:12px 16px;margin-bottom:6px;background:var(--cb);}
+.prod-layer-top{border-color:var(--g);border-width:1.5px;}
+.prod-layer-bottom{border-color:var(--j);border-width:1.5px;background:rgba(74,139,122,.03);}
+.prod-layer-highlight{border-color:var(--g);border-width:1.5px;background:rgba(200,164,92,.05);}
+.prod-layer-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.prod-layer-tag{padding:3px 10px;background:var(--i);color:var(--g);font-size:10px;font-weight:600;border-radius:3px;letter-spacing:1px;}
+.prod-layer-head h4{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:var(--i);margin:0;}
+.prod-prods{display:grid;gap:6px;}
+.prod-item{background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 12px;transition:.2s;}
+.prod-item:hover{border-color:rgba(200,164,92,.3);}
+.prod-item .pi-icon{font-size:18px;margin-bottom:3px;}
+.prod-item .pi-title{font-size:12px;font-weight:600;color:var(--i);margin-bottom:3px;}
+.prod-item .pi-desc{font-size:11px;color:#888;line-height:1.4;}
+
+/* ===== COMPACT ARCH ===== */
+.prod-compact{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}
+.prod-compact .pc-item{display:flex;align-items:flex-start;gap:8px;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:4px;font-size:11px;}
+.prod-compact .pc-icon{font-size:16px;flex-shrink:0;}
+.prod-compact .pc-title{font-weight:600;color:var(--i);margin-bottom:2px;display:block;font-size:12px;}
+.prod-compact .pc-desc{color:#888;font-size:10px;line-height:1.4;display:block;}
+.prod-compact .pc-item-core{border-color:var(--g);border-width:1.5px;background:rgba(200,164,92,.05);grid-column:1 / -1;}
+.prod-arrow{text-align:center;color:var(--g);font-size:12px;padding:4px 0;letter-spacing:2px;}
+
+/* ===== TAGS ===== */
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0;}
+.tag{padding:5px 12px;background:rgba(200,164,92,.06);border:1.5px solid rgba(200,164,92,.3);color:var(--g);font-size:11px;font-weight:500;letter-spacing:1px;border-radius:20px;}
+
+/* ===== CASE META ===== */
+.case-meta{display:flex;flex-wrap:wrap;gap:12px;padding:12px 16px;background:var(--cb);border:1px solid var(--line);border-radius:6px;margin-bottom:12px;font-size:12px;color:var(--i);}
+.case-meta span{font-weight:500;color:var(--g);}
+
+/* ===== BULLET LIST ===== */
+.bullet-list{list-style:none;padding:0;}
+.bullet-list li{padding:5px 0;padding-left:20px;position:relative;font-size:13px;color:#555;}
+.bullet-list li::before{content:'▸';position:absolute;left:0;color:var(--g);font-size:10px;line-height:inherit;}
+
+/* ===== FLOW ===== */
+.flow{display:grid;gap:6px;margin:12px 0;}
+.flow .step{background:var(--cb);border:1px solid var(--line);border-radius:5px;padding:10px;text-align:center;}
+.flow .step .step-n{font-size:9px;color:var(--g);font-weight:600;letter-spacing:1px;}
+.flow .step .step-ic{font-size:16px;margin:2px 0;}
+.flow .step .step-t{font-size:11px;font-weight:600;color:var(--i);}
+.flow .step.on{background:#fff;border:1.5px solid var(--g);}
+.flow .step.on::after{content:'';display:block;width:10px;height:10px;background:var(--g);border-radius:50%;margin:4px auto -2px;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:960px){
+  .sidebar{display:none;}
+  .main{margin-left:0;padding:28px 20px;}
+  .cg2,.cg3,.cg4,.cg5,.cg6{grid-template-columns:1fr;}
+  .price-grid{grid-template-columns:1fr;}
+  .proc{flex-direction:column;}
+  .why-grid{grid-template-columns:1fr;}
+  .h-main{font-size:24px;}
+}
+
+/* ===== FLOWCHART WRAP ===== */
+.flowchart-wrap{background:#FFFFFF;border:1px solid var(--line);border-radius:8px;padding:20px 24px;margin:20px 0;box-shadow:0 1px 4px rgba(15,27,48,.04);}
+.flowchart-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed var(--line);}
+.flowchart-head-num{width:30px;height:30px;border:2px solid var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;font-size:12px;color:var(--g);flex-shrink:0;}
+.flowchart-head h4{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;color:var(--i);margin:0;letter-spacing:.5px;}
+.flowchart-head .fc-sub{margin-left:auto;font-size:10px;color:var(--g);letter-spacing:2px;font-weight:600;padding:3px 10px;background:rgba(200,164,92,.08);border-radius:20px;}
+.flowchart-svg{width:100%;height:auto;display:block;}
+.flowchart-svg .node-title{font-family:'Noto Serif SC',serif;font-weight:700;}
+.flowchart-svg .node-sub{font-family:'Noto Sans SC',sans-serif;}
+
+
+/* ====== PRINT + COVER + TOC STYLES ====== */
+@page { size: A4; margin: 14mm 14mm 16mm 14mm; @bottom-center { content: counter(page); font-size: 9px; color: #888; } }
+
+@media print {
+  body { background: #fff !important; font-size: 10px !important; line-height: 1.6 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .main { margin: 0 auto !important; max-width: 100% !important; padding: 10px 12px !important; }
+  section { page-break-before: always; }
+  section#sec-overview { page-break-before: avoid; }
+  h2 { page-break-after: avoid; }
+  h3 { page-break-after: avoid; page-break-before: avoid; }
+  .flowchart-svg { max-width: 100% !important; height: auto !important; }
+  .pc-card, .arch-layer, .arch-card, .flowchart-wrap, .kpi-item, .why-item, .callout { page-break-inside: avoid; }
+  h2 + p, h2 + h3, h2 + .card-grid, h2 + .arch-card { page-break-before: avoid; }
+  .print-cover, .print-toc { page-break-after: always; }
+}
+
+.print-cover {
+  width: 100%; height: 100vh; min-height: 720px;
+  box-sizing: border-box; padding: 60px 40px;
+  background: linear-gradient(160deg, #0F1B30 0%, #1A2744 50%, #0F1B30 100%) !important;
+  color: #F5EFE2 !important; display: flex !important; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  page-break-after: always; position: relative; overflow: hidden;
+  margin: 0;
+}
+.print-cover::before, .print-cover::after { content: ""; position: absolute; border-radius: 50%; }
+.print-cover::before { top: -120px; right: -120px; width: 400px; height: 400px; border: 2px solid rgba(200,164,92,.3); }
+.print-cover::after { bottom: -80px; left: -80px; width: 300px; height: 300px; border: 2px solid rgba(200,164,92,.2); }
+.print-cover .cover-sub { font-size: 14px; color: #C8A45C; letter-spacing: 8px; margin-bottom: 24px; position: relative; z-index: 1; }
+.print-cover .cover-title { font-family: 'Noto Serif SC', serif; font-size: 44px; font-weight: 900; color: #F5EFE2 !important; line-height: 1.4; letter-spacing: 3px; margin-bottom: 12px; position: relative; z-index: 1; }
+.print-cover .cover-title em { font-style: normal; color: #C8A45C; }
+.print-cover .gold-line { width: 120px; height: 2px; background: linear-gradient(90deg, transparent, #C8A45C, transparent); margin: 24px auto; position: relative; z-index: 1; }
+.print-cover .cover-desc { font-size: 14px; color: rgba(245,239,226,.55); letter-spacing: 4px; margin-top: 16px; position: relative; z-index: 1; }
+.print-cover .cover-info { margin-top: 60px; font-size: 12px; color: rgba(245,239,226,.5); letter-spacing: 2px; position: relative; z-index: 1; }
+.print-cover .cover-info span { margin: 0 12px; }
+
+.print-toc { width: 100%; min-height: 100vh; box-sizing: border-box; padding: 50px 30px; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+.print-toc .toc-title { font-family: 'Noto Serif SC', serif; font-size: 36px; font-weight: 900; color: #0F1B30; margin-bottom: 36px; text-align: center; padding-bottom: 18px; border-bottom: 2px solid #C8A45C; letter-spacing: 8px; }
+.print-toc .toc-list { list-style: none; max-width: 680px; margin: 0 auto; width: 100%; }
+.print-toc .toc-item { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px dotted #D8D2C8; font-size: 14px; text-decoration: none; color: inherit; }
+.print-toc .toc-item:hover { background: rgba(200,164,92,.06); border-radius: 4px; }
+.print-toc .toc-item .num { color: #C8A45C; font-weight: 700; font-family: 'Noto Serif SC', serif; min-width: 36px; }
+.print-toc .toc-item .name { flex: 1; color: #0F1B30; font-weight: 600; }
+.print-toc .toc-item .name em { color: #888; font-style: normal; margin-left: 12px; font-size: 12px; font-weight: 400; }
+.print-toc .toc-item .page { color: #888; font-family: 'Noto Serif SC', serif; min-width: 30px; text-align: right; }
+</style>
+</head>
+<body>
+
+<!-- ===== PRINT COVER ===== -->
+<div class="print-cover">
+  <div class="cover-sub">清流县总医院</div>
+  <h1 class="cover-title">智慧治未病系统<br><em>整体解决方案</em></h1>
+  <div class="gold-line"></div>
+  <div class="cover-desc">AI 四诊硬件 ＋ 中医大模型软件 ＋ 全流程运营体系</div>
+  <div class="cover-info">
+    <span>观健在（厦门）智能科技有限公司</span>
+    <span>|</span>
+    <span>2026 年 7 月</span>
+  </div>
+</div>
+
+<!-- ===== PRINT TOC ===== -->
+<div class="print-toc">
+  <h2 class="toc-title">目&emsp;录</h2>
+  <ul class="toc-list">
+    <a href="#sec-overview" class="toc-item"><span class="num">00</span><span class="name">方案摘要<em>Executive Summary</em></span><span class="page">01</span></a>
+    <a href="#sec-1-1" class="toc-item"><span class="num">01</span><span class="name">项目背景与市场分析<em>· 政策驱动 / 行业现状 / 清流需求</em></span><span class="page">02</span></a>
+    <a href="#sec-2-1" class="toc-item"><span class="num">02</span><span class="name">核心痛点分析<em>· 医院端 / 基层端 / 民众端 / 管理端</em></span><span class="page">04</span></a>
+    <a href="#sec-3-1" class="toc-item"><span class="num">03</span><span class="name">项目总体定位与建设目标</span><span class="page">06</span></a>
+    <a href="#sec-4" class="toc-item"><span class="num">04</span><span class="name">产品总体架构<em>· 5 层架构 L1-L5</em></span><span class="page">07</span></a>
+    <a href="#sec-5-0" class="toc-item"><span class="num">05</span><span class="name">核心应用场景与业务全流程<em>· 院内 / 基层 / 运营 / 传承 / 驾驶舱</em></span><span class="page">10</span></a>
+    <a href="#sec-6-income" class="toc-item"><span class="num">06</span><span class="name">创收分析<em>· 5 大渠道 / 转化漏斗 / ROI 测算</em></span><span class="page">18</span></a>
+    <a href="#sec-7" class="toc-item"><span class="num">07</span><span class="name">系统部署与对接方案</span><span class="page">22</span></a>
+    <a href="#sec-8" class="toc-item"><span class="num">08</span><span class="name">商务报价方案<em>· 基础 53 万 / 进阶 101 万 / 全县 185 万</em></span><span class="page">24</span></a>
+    <a href="#sec-9" class="toc-item"><span class="num">09</span><span class="name">代表客户案例<em>· 中医院类 + 全国 16 地区</em></span><span class="page">27</span></a>
+    <a href="#sec-10" class="toc-item"><span class="num">10</span><span class="name">为什么选我们 · 实施规划 · 售后服务</span><span class="page">29</span></a>
+    <a href="#sec-summary" class="toc-item"><span class="num">11</span><span class="name">总结与展望</span><span class="page">31</span></a>
+  </ul>
+</div>
+
+<div class="wrap">
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main" style="margin:0 auto;max-width:1100px;padding:40px 60px;width:100%;">
+
+<!-- ===== OVERVIEW ===== -->
+<section id="sec-overview">
+  <h2>方案摘要</h2>
+
+  <p>本方案面向<b>清流县总医院</b>，以治未病科为核心，依托"AI 四诊硬件 + 中医大模型软件 + 全流程运营体系"，构建<b>"1 个县域治未病中心 + N 个乡镇基层服务点"</b>的县乡村一体化服务网络，打造集健康辨识、辨证评估、干预指导、随访管理、基层赋能、数据运营于一体的智慧治未病体系。</p>
+
+  <p>项目既满足国家治未病科建设标准，又贴合清流县实际需求，最终形成<strong>"总院有标杆、基层有服务、居民有获得感、管理有数据支撑"</strong>的县域治未病服务模式。</p>
+
+  <div class="callout">
+    <strong>核心定位：</strong>务实落地 · 成效先行 · 分步推进。以 AI 技术赋能治未病科室建设与基层服务下沉，构建可持续的县域运营模式，实现社会效益与经济效益双重提升。
+  </div>
+</section>
+
+<!-- ===== 一、项目背景 ===== -->
+<section id="sec-1-1">
+  <h2>一、项目背景与市场分析</h2>
+
+  <h3>1.1 政策驱动：治未病成为县域中医药建设核心抓手</h3>
+  <p>国家层面持续强化中医药"治未病"的战略地位。《中医医院治未病科建设与管理指南（2025 年修订版）》明确要求二级以上中医医院需<strong>独立设置治未病科</strong>，配备标准化的健康状态辨识设备，实现"健康评估-干预-追踪管理"一体化服务。科室面积、人员、设备均有硬性指标，治未病科不再是"可选项"而是"必选项"。</p>
+  <p>在县域医疗领域，《医疗卫生强基工程实施方案》提出，县级中医医院需发挥县域中医药<strong>龙头作用</strong>，牵头组建医共体，推动乡镇卫生院中医馆全覆盖，将治未病服务向基层下沉。《福建省紧密型医共体建设方案》同步推进，鼓励县域打造"预防-诊疗-康复"全链条中医药服务体系。</p>
+  <p>三明医改全国标杆，清流作为区域内率先启动治未病体系的县医院，具备<strong>打造示范项目的先发优势</strong>——第一个吃螃蟹的县医院，将获得政策、资金、品牌的三重红利。</p>
+
+  <div class="card-grid cg3">
+    <div class="card highlight"><div class="card-icon">📜</div><div class="card-title">国家战略</div><div class="card-desc">《治未病科建设与管理指南》要求独立设科 + 标准化设备，实现健康评估→干预→追踪管理一体化。</div></div>
+    <div class="card highlight"><div class="card-icon">🏗</div><div class="card-title">县域部署</div><div class="card-desc">《强基工程》要求县中医院发挥龙头作用，牵头医共体，推动<strong>乡镇中医馆、村卫生室、社区卫生服务中心</strong>全覆盖。</div></div>
+    <div class="card highlight"><div class="card-icon">🏛</div><div class="card-title">省级落地</div><div class="card-desc">福建省紧密型医共体建设，鼓励县域打造预防→诊疗→康复全链条。三明医改标杆，先发优势窗口期。</div></div>
+  </div>
+
+  <h3 id="sec-1-2">1.2 行业现状：县域治未病普遍"有科室、弱能力"</h3>
+  <p>当前县域中医医院治未病建设普遍存在四大共性问题：</p>
+
+  <div class="card-grid cg4">
+    <div class="card"><div class="card-icon">🔄</div><div class="card-title">服务同质化严重</div><div class="card-desc">多数医院仅配备基础体质辨识设备，服务项目集中在简单体检，缺乏差异化干预方案，难以形成科室特色与核心竞争力。</div></div>
+    <div class="card"><div class="card-icon">📉</div><div class="card-title">基层能力断层</div><div class="card-desc">乡镇中医馆、村卫生室、社区卫生服务中心普遍缺乏专业中医师，仅能开展基础理疗，无法提供标准化的体质评估与健康指导，分级诊疗落地难。</div></div>
+    <div class="card"><div class="card-icon">💰</div><div class="card-title">营收模式单一</div><div class="card-desc">收入主要依赖有限的诊疗服务收费，药食同源、养生干预等非医保项目开发不足，科室自我造血能力弱。</div></div>
+    <div class="card"><div class="card-icon">📊</div><div class="card-title">数据价值未释放</div><div class="card-desc">健康数据分散在不同系统，缺乏统一沉淀与分析，无法支撑区域健康管理与科研转化，管理决策缺乏数据支撑。</div></div>
+  </div>
+
+  <div class="callout">
+    <strong>三明区域研判：</strong>目前尚无标杆性县域治未病中心。清流县总医院率先启动治未病体系建设，具备打造区域示范项目的先发优势。
+  </div>
+
+  <h3 id="sec-1-3">1.3 清流县本地需求研判</h3>
+  <p>结合调研交流，清流县总医院治未病建设具备明确的 5 项现实诉求。治未病科目前<strong>仅有 1 名主治医师</strong>，同时承担门诊与管理工作，服务项目少、特色不显，亟待突破。</p>
+
+  <div class="card-grid cg2">
+    <div class="card highlight"><div class="card-num">01</div><div class="card-title">打造科室亮点</div><div class="card-desc">突破现有治未病科服务单一的现状，在三明市形成<strong>差异化特色</strong>，成为医院对外展示的<strong>名片科室</strong>。</div></div>
+    <div class="card"><div class="card-num">02</div><div class="card-title">区域辐射下沉</div><div class="card-desc">以总医院为核心，将服务延伸至下辖<strong>乡镇中医馆、村卫生室、社区卫生服务中心</strong>，<strong>统一诊疗标准</strong>，提升基层中医药服务能力。</div></div>
+    <div class="card"><div class="card-num">03</div><div class="card-title">兼顾效益创收</div><div class="card-desc">在公益服务基础上，通过<strong>药食同源产品</strong>、特色干预服务等方式，开辟科室<strong>新的营收增长点</strong>。</div></div>
+    <div class="card"><div class="card-num">04</div><div class="card-title">技术落地务实</div><div class="card-desc">对纯概念性临床系统持谨慎态度，更看重<strong>可落地、能见效、易操作</strong>的数字化工具。避免"重建设、轻使用"。</div></div>
+    <div class="card highlight" style="grid-column:span 2;"><div class="card-num">05</div><div class="card-title">人才培养需求</div><div class="card-desc">治未病科人员配置有限，希望通过数字化工具<strong>减轻医生负担</strong>，同时实现<strong>经验沉淀与人才带教</strong>，让年轻医生快速成长。</div></div>
+  </div>
+</section>
+
+<!-- ===== 二、核心痛点分析 ===== -->
+<section id="sec-2-1">
+  <h2>二、核心痛点分析</h2>
+
+  <h3 id="sec-2-1">2.1 医院端：科室发展缺抓手，服务能力待突破</h3>
+  <div class="card-grid cg4">
+    <div class="card"><div class="card-icon">👥</div><div class="card-title">人力不足</div><div class="card-desc">仅 1 名主治医师承担门诊与管理，<strong>难以覆盖大量人群</strong>健康评估。</div></div>
+    <div class="card"><div class="card-icon">🧩</div><div class="card-title">服务零散</div><div class="card-desc">三伏灸、体质辨识<strong>缺乏完整闭环</strong>，用户粘性低。</div></div>
+    <div class="card"><div class="card-icon">📐</div><div class="card-title">标准不一</div><div class="card-desc">传统体质辨识<strong>依赖医生主观判断</strong>，服务质量难标准化。</div></div>
+    <div class="card"><div class="card-icon">💸</div><div class="card-title">创收薄弱</div><div class="card-desc">营收结构单一，<strong>高附加值服务</strong>未充分开发。</div></div>
+  </div>
+
+  <h3 id="sec-2-2">2.2 基层端：服务能力薄弱，分级诊疗难落地</h3>
+  <div class="card-grid cg3">
+    <div class="card"><div class="card-icon">🎓</div><div class="card-title">专业人才匮乏</div><div class="card-desc">乡镇中医馆、村卫生室人员中医基础<strong>薄弱</strong>，仅能提供基础理疗。</div></div>
+    <div class="card"><div class="card-icon">🛠</div><div class="card-title">设备配置不足</div><div class="card-desc">缺乏标准化中医检测设备，<strong>无法获得用户信任</strong>。</div></div>
+    <div class="card"><div class="card-icon">🔗</div><div class="card-title">上下联动缺失</div><div class="card-desc">基层与总院间<strong>缺乏数字化通道</strong>，分级诊疗停留在纸面。</div></div>
+  </div>
+
+  <h3 id="sec-2-3">2.3 民众端：认知不足，服务可及性差</h3>
+  <div class="card-grid cg3">
+    <div class="card"><div class="card-icon">💡</div><div class="card-title">理念薄弱</div><div class="card-desc">县域居民"重治疗、轻预防"，对<strong>健康调理价值认知</strong>不足。</div></div>
+    <div class="card"><div class="card-icon">📍</div><div class="card-title">获取不便</div><div class="card-desc">乡镇居民往返县城<strong>成本高</strong>，健康管理中断率高。</div></div>
+    <div class="card"><div class="card-icon">📋</div><div class="card-title">千人一面</div><div class="card-desc">传统方案<strong>同质化</strong>严重，缺乏个性化日常指导。</div></div>
+  </div>
+
+  <h3 id="sec-2-4">2.4 管理端：数据沉淀不足，成效难以量化</h3>
+  <div class="card-grid cg3">
+    <div class="card"><div class="card-icon">🔌</div><div class="card-title">数据孤岛</div><div class="card-desc">检测、诊疗、随访数据<strong>分散在不同系统</strong>，无法形成完整档案。</div></div>
+    <div class="card"><div class="card-icon">📊</div><div class="card-title">缺乏抓手</div><div class="card-desc">无法实时掌握<strong>服务量、转化率、人群体质分布</strong>等核心数据。</div></div>
+    <div class="card"><div class="card-icon">📈</div><div class="card-title">成效难量化</div><div class="card-desc">社会效益与经济效益<strong>缺乏直观数据呈现</strong>，不利于政策申报。</div></div>
+  </div>
+</section>
+
+<!-- ===== 三、项目定位与目标 ===== -->
+<section id="sec-3-1">
+  <h2>三、项目总体定位与建设目标</h2>
+
+  <h3 id="sec-3-1">3.1 项目定位</h3>
+  <p>本项目以清流县总医院治未病科为核心，依托"AI 四诊硬件 + 中医大模型软件 + 全流程运营体系"，构建<strong>"1 个县域治未病中心 + N 个乡镇基层服务点"</strong>的县乡村一体化服务网络，打造集健康辨识、辨证评估、干预指导、随访管理、基层赋能、数据运营于一体的智慧治未病体系。</p>
+
+  <p>项目既满足国家治未病科建设标准，又贴合清流县实际需求，最终形成"总院有标杆、基层有服务、居民有获得感、管理有数据支撑"的县域治未病<strong>"清流模式"</strong>。</p>
+
+  <div class="tags">
+    <span class="tag">🔍 辨识</span><span class="tag">📋 辨证评估</span><span class="tag">💊 干预指导</span>
+    <span class="tag">📱 随访管理</span><span class="tag">🏘 基层赋能</span><span class="tag">📊 数据运营</span>
+  </div>
+
+  <h3 id="sec-3-2">3.2 五大建设目标</h3>
+  <div class="card-grid cg2">
+    <div class="card highlight"><div class="card-num">01</div><div class="card-title">科室标杆目标</div><div class="card-desc"><strong>1 年内</strong>建成三明市县域示范治未病科，丰富治未病服务内容（包括体质辨识、调理方案、节气养生等治未病场景下的服务），成为医院特色名片。</div></div>
+    <div class="card"><div class="card-num">02</div><div class="card-title">服务覆盖目标</div><div class="card-desc">首期覆盖<strong>3 个重点乡镇/社区</strong>，逐步辐射全县所有乡镇中医馆、村卫生室、社区卫生服务中心，实现"基层首筛、中心指导、双向转诊"的分级诊疗闭环。服务覆盖率提升 <strong>80% 以上</strong>。</div></div>
+    <div class="card"><div class="card-num">03</div><div class="card-title">效益提升目标</div><div class="card-desc">治未病科<strong>年营收实现 100% 以上增长</strong>，非医保健康服务（药食同源、养生茶饮、膏方、付费管理套餐）占比提升至<strong>40% 以上</strong>，形成可持续运营模式。</div></div>
+    <div class="card"><div class="card-num">04</div><div class="card-title">能力赋能目标</div><div class="card-desc">通过 AI 治未病管理系统与名医传承工具，快速提升基层医生中医服务能力。<strong>让基层也能提供标准化的治未病服务。</strong></div></div>
+    <div class="card highlight" style="grid-column:span 2;"><div class="card-num">05</div><div class="card-title">数据沉淀目标</div><div class="card-desc">建成县域中医健康数据库，预计年新增<strong>2 万+ 份</strong>结构化中医健康数据，形成居民全周期健康档案。支撑公卫管理、科研申报、政策决策——数据资产成为医院的<strong>核心竞争力</strong>。</div></div>
+  </div>
+</section>
+
+<!-- ===== 四、产品总体架构 ===== -->
+<section id="sec-4">
+  <h2>四、产品总体架构</h2>
+  <p>本方案采用<strong>院内全栈私有化部署</strong>，自下而上构建"端-边"协同架构：<strong>端 = 灵机四诊仪 / 医生工作站 / C 端小程序</strong>（数据采集与用户交互），<strong>边 = 院内大模型 + 治未病管理系统 + 业务应用</strong>（数据不出院）。自下而上分为<strong>感知层（L5）→ 技术底座（L4）→ 平台层（L3）→ 应用层（L2）→ 终端层（L1）</strong>共 5 层架构，实现数据全链路贯通与业务全场景覆盖。</p>
+
+  <div class="prod-arch">
+    <!-- L1 终端层 -->
+    <div class="prod-layer prod-layer-top">
+      <div class="prod-layer-head">
+        <span class="prod-layer-tag top">终端触达</span>
+        <h4>L1 · 终端层</h4>
+        <span class="prod-layer-en">TERMINAL</span>
+      </div>
+      <div class="prod-compact">
+        <div class="pc-item"><span class="pc-icon">📱</span><div class="pc-content"><span class="pc-title">C 端小程序</span><span class="pc-desc">报告 / 预约 / 商城 / 养生</span></div></div>
+        <div class="pc-item"><span class="pc-icon">👨‍⚕️</span><div class="pc-content"><span class="pc-title">PC 工作站</span><span class="pc-desc">医生查看 + 辨证方案</span></div></div>
+        <div class="pc-item"><span class="pc-icon">📊</span><div class="pc-content"><span class="pc-title">管理驾驶舱</span><span class="pc-desc">实时看板 + 决策支撑</span></div></div>
+        <div class="pc-item"><span class="pc-icon">📋</span><div class="pc-content"><span class="pc-title">Pad 端</span><span class="pc-desc">便携 · 辅诊</span></div></div>
+      </div>
+    </div>
+
+    <div class="prod-arrow">↑ 用户交互 · 数据采集 ↓</div>
+
+    <!-- L2 应用层 -->
+    <div class="prod-layer">
+      <div class="prod-layer-head">
+        <span class="prod-layer-tag">应用服务</span>
+        <h4>L2 · 应用层</h4>
+        <span class="prod-layer-en">APPLICATION</span>
+      </div>
+      <div class="prod-compact">
+        <div class="pc-item"><span class="pc-icon">🏥</span><div class="pc-content"><span class="pc-title">院内服务</span><span class="pc-desc">检测→评估→调理</span></div></div>
+        <div class="pc-item"><span class="pc-icon">🏘</span><div class="pc-content"><span class="pc-title">基层赋能</span><span class="pc-desc">会诊 · 方案下发</span></div></div>
+        <div class="pc-item"><span class="pc-icon">💊</span><div class="pc-content"><span class="pc-title">健康运营</span><span class="pc-desc">调理区 · 会员 · 复购</span></div></div>
+        <div class="pc-item"><span class="pc-icon">📚</span><div class="pc-content"><span class="pc-title">名医传承</span><span class="pc-desc">智能体 · 师承</span></div></div>
+        <div class="pc-item"><span class="pc-icon">📈</span><div class="pc-content"><span class="pc-title">运营管理</span><span class="pc-desc">报表 · 决策</span></div></div>
+      </div>
+    </div>
+
+    <div class="prod-arrow">↑ 业务调用 · 数据汇聚 ↓</div>
+
+    <!-- L3 平台层 -->
+    <div class="prod-layer prod-layer-highlight">
+      <div class="prod-layer-head">
+        <span class="prod-layer-tag core">能力中台</span>
+        <h4>L3 · 平台层</h4>
+        <span class="prod-layer-en">PLATFORM · 核心</span>
+      </div>
+      <div class="prod-compact">
+        <div class="pc-item"><span class="pc-icon">⚙️</span><div class="pc-content"><span class="pc-title">治未病管理系统 <span style="font-size:10px;color:var(--gold);font-weight:600;letter-spacing:2px;margin-left:4px;">★ 核心</span></span><span class="pc-desc">智能辨证 · 个性化调理方案 · 治未病档案 · 设备/用户/运营管理</span></div></div>
+        <div class="pc-item"><span class="pc-icon">🩺</span><div class="pc-content"><span class="pc-title">辅助诊疗系统</span><span class="pc-desc">辅助辨证 · 开方</span></div></div>
+        <div class="pc-item"><span class="pc-icon">📚</span><div class="pc-content"><span class="pc-title">名老中医传承系统</span><span class="pc-desc">医案管理 · 名医智能体 · 师承考核</span></div></div>
+      </div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px dashed rgba(200,164,92,.3);font-size:11px;color:var(--m);letter-spacing:1px;">
+        <strong style="color:var(--gold);">支持对接能力：</strong>🏥 HIS 系统 · 🏛 区域卫生平台 · 💊 共享中药房
+      </div>
+    </div>
+
+    <div class="prod-arrow">↑ AI 推理 · 原始数据 ↓</div>
+
+    <!-- 底座层 -->
+    <div class="prod-layer prod-layer-bottom">
+      <div class="prod-layer-head">
+        <span class="prod-layer-tag bottom">技术底座</span>
+        <h4>L4 · 技术底座</h4>
+        <span class="prod-layer-en">FOUNDATION · 基础设施</span>
+      </div>
+      <div class="prod-compact">
+        <div class="pc-item pc-item-core">
+          <span class="pc-icon">🧠</span>
+          <div class="pc-content">
+            <span class="pc-title">私有化中医大模型底座</span>
+            <span class="pc-desc">31 万临床医案 · 2800+ 古籍教材 · 四诊合参 · 辨证推理 · 方案生成 · <strong>院内私有化部署 · 数据不出院</strong></span>
+          </div>
+        </div>
+        <div class="pc-item pc-item-core">
+          <span class="pc-icon">🔒</span>
+          <div class="pc-content">
+            <span class="pc-title">安全管控体系</span>
+            <span class="pc-desc">数据加密 · 分级权限管控 · 操作日志审计 · 医疗数据安全保障</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-arrow">↑ AI 推理 · 原始数据采集 ↓</div>
+
+    <!-- L5 感知层 -->
+    <div class="prod-layer prod-layer-bottom">
+      <div class="prod-layer-head">
+        <span class="prod-layer-tag bottom">数据采集</span>
+        <h4>L5 · 感知层</h4>
+        <span class="prod-layer-en">SENSING · 设备端</span>
+      </div>
+      <div class="prod-compact">
+        <div class="pc-item pc-item-highlight"><span class="pc-icon">🔬</span><div class="pc-content"><span class="pc-title">灵机四诊仪 · 院内部署</span><span class="pc-desc">与乡镇<strong>同一型号</strong> · 舌 14 维 / 面 12 维（92%）/ 脉 7 指标 200Hz · 前端 AI 芯片本地推理</span></div></div>
+        <div class="pc-item pc-item-highlight"><span class="pc-icon">🔬</span><div class="pc-content"><span class="pc-title">灵机四诊仪 · 乡镇部署</span><span class="pc-desc">与院内<strong>同一型号</strong> · 4G/有线双网络 · 接通即用 · 回传总院</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 五、应用场景 ===== -->
+<section id="sec-5-0">
+  <h2>五、核心应用场景与业务全流程</h2>
+
+  <h3 id="sec-5-0">5.0 五阶段全闭环服务流程</h3>
+  <p>本项目围绕"县-乡-村"三级服务体系，打造从健康筛查到持续管理的全闭环治未病服务流程，覆盖院内服务、基层赋能、健康运营、经验传承、管理决策全场景。</p>
+
+  <div class="proc">
+    <div class="proc-step hl"><div class="ps-num">阶段 1</div><div class="ps-title">🩺 健康筛查与采集</div><div class="ps-desc">4 个入口：院内公区/科室/基层/义诊 · 3-5 分钟完成四诊采集 · 自动生成临时健康档案</div></div>
+    <div class="proc-step"><div class="ps-num">阶段 2</div><div class="ps-title">🧠 智能评估与审核</div><div class="ps-desc">AI 自动评估体质+风险+方案 · 医生工作站查看调整确认 · 生成正式评估报告</div></div>
+    <div class="proc-step"><div class="ps-num">阶段 3</div><div class="ps-title">💊 多维干预与执行</div><div class="ps-desc">院内：膏方/三伏贴/理疗 · 基层：艾灸/拔罐/方案 · 双向转诊闭环</div></div>
+    <div class="proc-step"><div class="ps-num">阶段 4</div><div class="ps-title">📱 C 端管理与转化</div><div class="ps-desc">小程序查看报告/预约/购买 · 节气养生推送 · 复查提醒 · 会员复购</div></div>
+    <div class="proc-step hl"><div class="ps-num">阶段 5</div><div class="ps-title">📊 数据沉淀与决策</div><div class="ps-desc">区域健康数据库 · 管理驾驶舱实时看板 · 运营报告生成 · 方案传承复用</div></div>
+  </div>
+
+  <h3 id="sec-5-1">5.1 院内场景：公区筛查 + 治未病科标准化服务</h3>
+  <p>院内场景采用"<strong>两台灵机四诊仪 + 两个部署位置</strong>"的策略：① 一台放在<strong>门诊大厅/导诊台/体检中心等公区</strong>，让普通用户（体检人群、就诊等候、家属陪护等）可以自行自助检测，作为免费智能导诊入口；② 另一台放在<strong>治未病科</strong>，作为科室标准化服务的一个环节（到院登记后由护士引导做四诊采集），承接公区导流来的精准客户。两个场景形成"<strong>公区自助引流 → 治未病科标准化承接</strong>"的院内闭环。</p>
+
+  <div class="card-grid cg2" style="margin-top:16px;">
+    <div class="card highlight">
+      <div class="card-title" style="color:var(--gold);">📍 部署位置 1：公区自助筛查入口（导诊台/体检中心/门诊大厅）</div>
+      <div class="card-desc"><strong>设备：1 台</strong>灵机四诊仪（公区专用）<br><strong>面向：</strong>普通用户（体检人群、就诊等候、家属陪护等）<strong>自助检测</strong>，无需医护引导<br><strong>定位：</strong>以免费中医体质检测为流量钩子，作为医院智慧服务入口。检测完成后<strong>直接引导到旁边的"调理商品区"</strong>（体质茶饮/汤包/膏方/艾灸贴等货架），让用户从"看完报告"到"顺手带一份调理产品"零摩擦（参考厦门中医院公区导流模式）<br><strong>全流程：</strong>自助检测（3 分钟四诊+问诊）→ 自动报告 → <strong>路径 A：自我健康管理</strong>（小程序节气养生+复查提醒）→ <strong>路径 B：智能导诊挂号</strong>（按检测结果精准推荐科室）→ <strong>路径 C：调理商品区现场选购</strong>（系统根据体质推送适配的药食同源产品）<br><strong>产品：</strong>灵机四诊仪 + 智能导诊预问诊模块 + C 端小程序 + 调理商品区货架</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--gold);">📍 部署位置 2：治未病科标准化服务（核心承接）</div>
+      <div class="card-desc"><strong>设备：1 台</strong>灵机四诊仪（科室专用，与公区同型号）<br><strong>面向：</strong>已完成公区自助检测并取得报告的客户；或专程到治未病科做深度服务的用户<br><strong>定位：</strong>作为全院治未病服务的核心标杆，提供<strong>用户自助+智能引导</strong>的标准化服务流程（无需专人一对一陪同）<br><strong>全流程：</strong>用户自助登记 → 自助四诊采集 → 报告生成 → 三路径引导（详见下方流程）<br><strong>产品：</strong>灵机四诊仪 + 治未病管理系统 + C 端小程序</div>
+    </div>
+  </div>
+
+  <div class="flowchart-wrap">
+    <div class="flowchart-head">
+      <span class="flowchart-head-num">1</span>
+      <h4>公区自助筛查导流流程</h4>
+      <span class="fc-sub">部署位置 1 · 院内公区</span>
+    </div>
+    <svg class="flowchart-svg" viewBox="0 0 860 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ag1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C8A45C"/></marker>
+        <marker id="aj1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4A8B7A"/></marker>
+      </defs>
+      <!-- 起点：用户进入公区 -->
+      <ellipse cx="430" cy="32" rx="180" ry="24" fill="#C8A45C" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="430" y="30" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">📍 用户进入公区</text>
+      <text x="430" y="48" text-anchor="middle" class="node-sub" font-size="10" fill="#0F1B30">导诊台 / 体检中心 / 门诊大厅</text>
+      <line x1="430" y1="56" x2="430" y2="78" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag1)"/>
+      <!-- 节点1：自助检测 -->
+      <rect x="320" y="80" width="220" height="58" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="1.5"/>
+      <text x="430" y="100" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🔬 灵机四诊仪 自助检测</text>
+      <text x="430" y="120" text-anchor="middle" class="node-sub" font-size="10" fill="#666">3分钟完成 舌·面·脉·闻 采集 + 问诊</text>
+      <line x1="430" y1="138" x2="430" y2="160" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag1)"/>
+      <!-- 节点2：AI 评估 -->
+      <rect x="320" y="162" width="220" height="58" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="1.5"/>
+      <text x="430" y="182" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🧠 AI 智能评估</text>
+      <text x="430" y="202" text-anchor="middle" class="node-sub" font-size="10" fill="#666">自动生成报告 · 体质辨识 + 风险提示</text>
+      <line x1="430" y1="220" x2="430" y2="242" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag1)"/>
+      <!-- 节点3：智能分流 -->
+      <rect x="290" y="244" width="280" height="60" rx="6" fill="#0F1B30" stroke="#C8A45C" stroke-width="2"/>
+      <text x="430" y="266" text-anchor="middle" class="node-title" font-size="13" fill="#C8A45C">⚡ 智能三路径分流</text>
+      <text x="430" y="286" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">系统根据体质类型自动推荐后续路径</text>
+      <!-- 分流线 -->
+      <path d="M 430 304 L 430 322 L 160 322 L 160 340" fill="none" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag1)"/>
+      <path d="M 430 304 L 430 340" fill="none" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag1)"/>
+      <path d="M 430 304 L 430 322 L 700 322 L 700 340" fill="none" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag1)"/>
+      <!-- 路径 A -->
+      <rect x="40" y="342" width="240" height="58" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="160" y="362" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">路径 A · 自我健康管理</text>
+      <text x="160" y="382" text-anchor="middle" class="node-sub" font-size="10" fill="#666">小程序节气养生 + 复查提醒</text>
+      <!-- 路径 B -->
+      <rect x="310" y="342" width="240" height="58" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="430" y="362" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">路径 B · 智能导诊预约</text>
+      <text x="430" y="382" text-anchor="middle" class="node-sub" font-size="10" fill="#666">精准推荐科室 · 一键预约挂号</text>
+      <!-- 路径 C -->
+      <rect x="580" y="342" width="240" height="58" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="700" y="362" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">路径 C · 调理商品选购</text>
+      <text x="700" y="382" text-anchor="middle" class="node-sub" font-size="10" fill="#666">体质匹配 · 零摩擦现场购买</text>
+      <!-- 下沉结果 -->
+      <line x1="160" y1="400" x2="160" y2="416" stroke="#4A8B7A" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#aj1)"/>
+      <line x1="430" y1="400" x2="430" y2="416" stroke="#4A8B7A" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#aj1)"/>
+      <line x1="700" y1="400" x2="700" y2="416" stroke="#4A8B7A" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#aj1)"/>
+      <rect x="40" y="418" width="240" height="44" rx="5" fill="#F8F6F1" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="160" y="432" text-anchor="middle" class="node-sub" font-size="11" font-weight="600" fill="#0F1B30">C 端小程序持续跟踪</text>
+      <text x="160" y="448" text-anchor="middle" class="node-sub" font-size="9" fill="#888">长期复购 · 会员体系</text>
+      <rect x="310" y="418" width="240" height="44" rx="5" fill="#F8F6F1" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="430" y="432" text-anchor="middle" class="node-sub" font-size="11" font-weight="600" fill="#0F1B30">到院 · 治未病科/推拿科</text>
+      <text x="430" y="448" text-anchor="middle" class="node-sub" font-size="9" fill="#888">精准客户 · 高客单</text>
+      <rect x="580" y="418" width="240" height="44" rx="5" fill="#F8F6F1" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="700" y="432" text-anchor="middle" class="node-sub" font-size="11" font-weight="600" fill="#0F1B30">商品区 现场购买</text>
+      <text x="700" y="448" text-anchor="middle" class="node-sub" font-size="9" fill="#888">即时转化 · 复购</text>
+    </svg>
+  </div>
+
+  <div class="flowchart-wrap">
+    <div class="flowchart-head">
+      <span class="flowchart-head-num">2</span>
+      <h4>治未病科 5 步标准化服务流程</h4>
+      <span class="fc-sub">部署位置 2 · 院内承接</span>
+    </div>
+    <svg class="flowchart-svg" viewBox="0 0 860 360" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ag2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C8A45C"/></marker>
+        <marker id="aj2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4A8B7A"/></marker>
+        <marker id="ab2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C8A45C"/></marker>
+      </defs>
+      <!-- 5 步主流程 -->
+      <line x1="170" y1="60" x2="190" y2="60" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag2)"/>
+      <line x1="340" y1="60" x2="360" y2="60" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag2)"/>
+      <line x1="510" y1="60" x2="530" y2="60" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag2)"/>
+      <line x1="680" y1="60" x2="700" y2="60" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag2)"/>
+      <!-- 01 自助采集 -->
+      <rect x="20" y="20" width="150" height="80" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="95" y="40" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 01</text>
+      <text x="95" y="58" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">自助四诊采集</text>
+      <text x="95" y="78" text-anchor="middle" class="node-sub" font-size="10" fill="#666">用户自主操作</text>
+      <text x="95" y="92" text-anchor="middle" class="node-sub" font-size="10" fill="#666">无需医护陪同</text>
+      <!-- 02 AI 评估 -->
+      <rect x="190" y="20" width="150" height="80" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="265" y="40" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 02</text>
+      <text x="265" y="58" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">AI 评估报告</text>
+      <text x="265" y="78" text-anchor="middle" class="node-sub" font-size="10" fill="#666">数据实时同步</text>
+      <text x="265" y="92" text-anchor="middle" class="node-sub" font-size="10" fill="#666">完整体质辨识</text>
+      <!-- 03 双路径引导 -->
+      <rect x="360" y="20" width="150" height="80" rx="6" fill="#0F1B30" stroke="#C8A45C" stroke-width="2"/>
+      <text x="435" y="40" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 03</text>
+      <text x="435" y="58" text-anchor="middle" class="node-title" font-size="13" fill="#C8A45C">报告 + 双路径引导</text>
+      <text x="435" y="78" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">用户查看后</text>
+      <text x="435" y="92" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">智能推荐两条路</text>
+      <!-- 04 医生服务 -->
+      <rect x="530" y="20" width="150" height="80" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="605" y="40" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 04</text>
+      <text x="605" y="58" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">医生服务（按需）</text>
+      <text x="605" y="78" text-anchor="middle" class="node-sub" font-size="10" fill="#666">结合报告出具</text>
+      <text x="605" y="92" text-anchor="middle" class="node-sub" font-size="10" fill="#666">个性化调理方案</text>
+      <!-- 05 持续跟踪 -->
+      <rect x="700" y="20" width="150" height="80" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="775" y="40" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 05</text>
+      <text x="775" y="58" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">持续健康跟踪</text>
+      <text x="775" y="78" text-anchor="middle" class="node-sub" font-size="10" fill="#666">节气/季度复测</text>
+      <text x="775" y="92" text-anchor="middle" class="node-sub" font-size="10" fill="#666">动态调整方案</text>
+      <!-- STEP 03 向下分支：分别进入 路径 A 与 路径 B -->
+      <text x="335" y="124" text-anchor="middle" class="node-sub" font-size="10" fill="#4A8B7A" font-weight="600">↓ 双路径分流</text>
+      <path d="M 405 100 L 405 130 L 240 130 L 240 170" fill="none" stroke="#4A8B7A" stroke-width="1.5" marker-end="url(#aj2)"/>
+      <path d="M 465 100 L 465 130 L 620 130 L 620 170" fill="none" stroke="#4A8B7A" stroke-width="1.5" marker-end="url(#aj2)"/>
+      <!-- 路径 A 调理商品区 -->
+      <rect x="130" y="172" width="220" height="62" rx="6" fill="#FFFFFF" stroke="#4A8B7A" stroke-width="1.5"/>
+      <text x="240" y="194" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">路径 A · 调理商品区选购</text>
+      <text x="240" y="214" text-anchor="middle" class="node-sub" font-size="10" fill="#666">系统推送适配药食同源</text>
+      <text x="240" y="228" text-anchor="middle" class="node-sub" font-size="10" fill="#666">用户自助选购 · 零摩擦</text>
+      <!-- 路径 B 医生深度服务 -->
+      <rect x="510" y="172" width="220" height="62" rx="6" fill="#FFFFFF" stroke="#4A8B7A" stroke-width="1.5"/>
+      <text x="620" y="194" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">路径 B · 医生深度服务</text>
+      <text x="620" y="214" text-anchor="middle" class="node-sub" font-size="10" fill="#666">医生结合报告解读</text>
+      <text x="620" y="228" text-anchor="middle" class="node-sub" font-size="10" fill="#666">出具膏方/三伏灸等方案</text>
+      <!-- 路径 B 上行回接 STEP 04（清晰的弧形回环） -->
+      <path d="M 530 195 Q 460 195 460 100" fill="none" stroke="#C8A45C" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ab2)"/>
+      <text x="470" y="155" text-anchor="middle" class="node-sub" font-size="9" fill="#C8A45C" font-style="italic">需医生服务时回接 Step 04</text>
+      <!-- 路径 A 直达 STEP 05（虚线跳过） -->
+      <path d="M 350 203 Q 430 280 700 60" fill="none" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="600" y="265" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-style="italic">路径 A 自助完成 · 直接进入 Step 05 持续跟踪</text>
+      <!-- 底部成果提示 -->
+      <rect x="80" y="298" width="700" height="44" rx="5" fill="#F8F6F1" stroke="#C8A45C" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="430" y="316" text-anchor="middle" class="node-title" font-size="12" fill="#0F1B30">🎯 院内闭环效果</text>
+      <text x="430" y="334" text-anchor="middle" class="node-sub" font-size="10" fill="#666">2 台四诊仪分别把守"入口"与"承接" · 公区自然流量 → 自助检测 → 双路径分流 → 商品/服务转化</text>
+    </svg>
+  </div>
+
+  <h4 style="margin:20px 0 8px;font-size:18px;color:var(--gold);">治未病科标准化服务 5 步流程（用户自助 + 智能引导）</h4>
+  <div class="proc">
+    <div class="proc-step hl"><div class="ps-num">01</div><div class="ps-title">自助四诊采集</div><div class="ps-desc">用户自主操作四诊仪完成舌·面·脉·闻采集+问诊，3-5 分钟完成，无需医护在场</div></div>
+    <div class="proc-step"><div class="ps-num">02</div><div class="ps-title">数据同步 + AI 评估</div><div class="ps-desc">实时同步工作站，AI 自动生成完整体质辨识报告（含风险提示、初步调理建议）</div></div>
+    <div class="proc-step hl"><div class="ps-num">03</div><div class="ps-title">报告查看 + 双路径引导</div><div class="ps-desc">用户查看报告后，系统根据体质智能推荐：<br>路径 A：直接到调理商品区选购适配产品（自助，无需医生）<br>路径 B：找医生 → 解读报告 + 必要的调理服务（膏方/三伏灸等）</div></div>
+    <div class="proc-step"><div class="ps-num">04</div><div class="ps-title">医生服务（按用户选择）</div><div class="ps-desc">选 B 的用户 → 医生结合用户分析检测报告，出具个性化调理方案（含膏方/三伏灸/经络调理等）</div></div>
+    <div class="proc-step hl"><div class="ps-num">05</div><div class="ps-title">持续健康跟踪</div><div class="ps-desc">系统定期推送复测提醒（节气/季度），动态调整方案</div></div>
+  </div>
+
+  <div class="card-grid cg3" style="margin-top:16px;">
+    <div class="card"><div class="card-icon">✨</div><div class="card-title">用户自助 + 智能引导</div><div class="card-desc">无需专人一对一陪同，用户自主完成检测 + 查看报告 + 选择下一步路径，大幅降低科室人力投入。</div></div>
+    <div class="card"><div class="card-icon">🎯</div><div class="card-title">三路径智能推荐</div><div class="card-desc">报告生成后根据体质自动推荐 3 条路径（商品区/医生解读/直接调理），不同需求不同转化方式。</div></div>
+    <div class="card"><div class="card-icon">🔄</div><div class="card-title">院内流量闭环</div><div class="card-desc">公区自然流量 → 自助检测 → 三路径分流 → 商品/服务/医生 → 持续健康跟踪，<strong>2 台四诊仪</strong>分别把守"入口"和"承接"两个关键岗位。</div></div>
+  </div>
+
+  <h3 id="sec-5-2">5.2 场景二：基层站点全场景服务与分级诊疗</h3>
+  <p>将治未病服务下沉至<strong>乡镇中医馆、村卫生室、社区卫生服务中心</strong>，以免费基础健康检测为服务入口，解决基层人才不足问题，实现<strong>"基层首诊、上级支撑、双向转诊、同质服务"</strong>，让居民在家门口就能获得标准化的中医健康服务，同时为县医院稳定输送优质客源。</p>
+
+  <div class="flowchart-wrap">
+    <div class="flowchart-head">
+      <span class="flowchart-head-num">3</span>
+      <h4>基层站点全场景服务流程</h4>
+      <span class="fc-sub">基层赋能 · 县乡村一体化</span>
+    </div>
+    <svg class="flowchart-svg" viewBox="0 0 860 560" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ag3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C8A45C"/></marker>
+        <marker id="aj3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4A8B7A"/></marker>
+      </defs>
+      <!-- 起点：居民到基层 -->
+      <ellipse cx="430" cy="32" rx="180" ry="24" fill="#C8A45C" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="430" y="30" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🏘 居民到基层站点</text>
+      <text x="430" y="48" text-anchor="middle" class="node-sub" font-size="10" fill="#0F1B30">乡镇中医馆 · 村卫生室 · 社区卫生服务中心</text>
+      <line x1="430" y1="56" x2="430" y2="78" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag3)"/>
+      <!-- 节点1：设备检测 -->
+      <rect x="320" y="80" width="220" height="56" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="1.5"/>
+      <text x="430" y="100" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🔬 灵机四诊仪 自助检测</text>
+      <text x="430" y="120" text-anchor="middle" class="node-sub" font-size="10" fill="#666">与院内同型号 · 4G/有线双网络</text>
+      <line x1="430" y1="136" x2="430" y2="158" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag3)"/>
+      <!-- 节点2：报告 + 同步总院 -->
+      <rect x="280" y="160" width="300" height="56" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="1.5"/>
+      <text x="430" y="180" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🧠 AI 生成报告 · 自动回传总院</text>
+      <text x="430" y="200" text-anchor="middle" class="node-sub" font-size="10" fill="#666">数据统一汇总至县域治未病管理平台</text>
+      <line x1="430" y1="216" x2="430" y2="238" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag3)"/>
+      <!-- 4 路径分流 -->
+      <rect x="290" y="240" width="280" height="40" rx="6" fill="#0F1B30" stroke="#C8A45C" stroke-width="2"/>
+      <text x="430" y="264" text-anchor="middle" class="node-title" font-size="13" fill="#C8A45C">⚡ 4 种后续服务路径 · 智能推荐</text>
+      <!-- 分流线 -->
+      <path d="M 430 280 L 430 302 L 130 302 L 130 320" fill="none" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag3)"/>
+      <path d="M 430 280 L 430 302 L 330 302 L 330 320" fill="none" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag3)"/>
+      <path d="M 430 280 L 430 302 L 530 302 L 530 320" fill="none" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag3)"/>
+      <path d="M 430 280 L 430 302 L 730 302 L 730 320" fill="none" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag3)"/>
+      <!-- 路径 1：自我健康 -->
+      <rect x="20" y="322" width="220" height="78" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="130" y="342" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">① 自我健康管理</text>
+      <text x="130" y="362" text-anchor="middle" class="node-sub" font-size="10" fill="#666">查看报告调理建议</text>
+      <text x="130" y="378" text-anchor="middle" class="node-sub" font-size="10" fill="#666">小程序持续养生指导</text>
+      <text x="130" y="392" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">▸ 长期自我管理</text>
+      <!-- 路径 2：导诊预约 -->
+      <rect x="250" y="322" width="200" height="78" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="350" y="342" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">② 导诊预约挂号</text>
+      <text x="350" y="362" text-anchor="middle" class="node-sub" font-size="10" fill="#666">智能推荐科室</text>
+      <text x="350" y="378" text-anchor="middle" class="node-sub" font-size="10" fill="#666">数据同步至总院</text>
+      <text x="350" y="392" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">▸ 到院无需重复检查</text>
+      <!-- 路径 3：远程问诊 -->
+      <rect x="460" y="322" width="200" height="78" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="560" y="342" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">③ 互联网远程问诊</text>
+      <text x="560" y="362" text-anchor="middle" class="node-sub" font-size="10" fill="#666">线上对接总院医生</text>
+      <text x="560" y="378" text-anchor="middle" class="node-sub" font-size="10" fill="#666">处方对接共享中药房</text>
+      <text x="560" y="392" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">▸ 配送到家</text>
+      <!-- 路径 4：定制方案 -->
+      <rect x="670" y="322" width="170" height="78" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="1.5"/>
+      <text x="755" y="342" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">④ 定制化方案</text>
+      <text x="755" y="362" text-anchor="middle" class="node-sub" font-size="10" fill="#666">复杂情况申请</text>
+      <text x="755" y="378" text-anchor="middle" class="node-sub" font-size="10" fill="#666">总院出方案</text>
+      <text x="755" y="392" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">▸ ★ 高客单</text>
+      <!-- 上下转诊 -->
+      <text x="430" y="430" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">⬆️ 双向转诊闭环 · 分级诊疗落地 ⬇️</text>
+      <!-- 上转 -->
+      <rect x="40" y="446" width="370" height="88" rx="6" fill="#0F1B30" stroke="#C8A45C" stroke-width="1.5"/>
+      <text x="225" y="468" text-anchor="middle" class="node-title" font-size="14" fill="#C8A45C">⬆️ 上转 · 基层 → 总院</text>
+      <text x="225" y="488" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">基层发现高风险用户 → 发起转诊</text>
+      <text x="225" y="504" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">预约总院号源 → 数据全量同步</text>
+      <text x="225" y="520" text-anchor="middle" class="node-sub" font-size="10" fill="#C8A45C" font-weight="600">▸ 到院无需重复检查</text>
+      <!-- 下转 -->
+      <rect x="450" y="446" width="370" height="88" rx="6" fill="#0F1B30" stroke="#4A8B7A" stroke-width="1.5"/>
+      <text x="635" y="468" text-anchor="middle" class="node-title" font-size="14" fill="#4A8B7A">⬇️ 下转 · 总院 → 基层</text>
+      <text x="635" y="488" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">总院康复期/慢病管理用户</text>
+      <text x="635" y="504" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">转回基层持续管理 → 方案同步</text>
+      <text x="635" y="520" text-anchor="middle" class="node-sub" font-size="10" fill="#4A8B7A" font-weight="600">▸ 无需重复奔波</text>
+    </svg>
+  </div>
+
+  <h3 id="sec-5-3">5.3 场景三：全周期健康运营与营收转化</h3>
+  <p>以免费检测为流量入口，打通<strong>"检测-评估-方案-产品-服务-随访"</strong>全链路，将公区、基层的自然流量转化为持续营收，打造科室自我造血能力。</p>
+  <div class="proc">
+    <div class="proc-step hl"><div class="ps-num">1</div><div class="ps-title">免费引流</div><div class="ps-desc">公区/基层/社区义诊，零成本引导关注小程序</div></div>
+    <div class="proc-step"><div class="ps-num">2</div><div class="ps-title">方案匹配</div><div class="ps-desc">基于体质辨识推送方案，推荐适配服务与产品</div></div>
+    <div class="proc-step"><div class="ps-num">3</div><div class="ps-title">服务转化</div><div class="ps-desc">小程序预约三伏灸/膏方/经络调理，购买汤包/茶饮</div></div>
+    <div class="proc-step"><div class="ps-num">4</div><div class="ps-title">交付闭环</div><div class="ps-desc">交付调理产品或服务，到院调理或详细辩证</div></div>
+    <div class="proc-step"><div class="ps-num">5</div><div class="ps-title">持续运营</div><div class="ps-desc">结合二十四节气推送养生建议，健康科普直播，复购复诊唤醒</div></div>
+    <div class="proc-step hl"><div class="ps-num">6</div><div class="ps-title">会员体系</div><div class="ps-desc">健康会员体系，套餐卡/次卡锁定长期用户</div></div>
+  </div>
+
+  <div class="flowchart-wrap">
+    <div class="flowchart-head">
+      <span class="flowchart-head-num">4</span>
+      <h4>全周期健康运营转化链路</h4>
+      <span class="fc-sub">6 阶段 · 营收闭环</span>
+    </div>
+    <svg class="flowchart-svg" viewBox="0 0 860 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ag4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C8A45C"/></marker>
+        <marker id="aj4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4A8B7A"/></marker>
+      </defs>
+      <!-- 6 阶段连线 -->
+      <line x1="140" y1="80" x2="158" y2="80" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag4)"/>
+      <line x1="280" y1="80" x2="298" y2="80" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag4)"/>
+      <line x1="420" y1="80" x2="438" y2="80" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag4)"/>
+      <line x1="560" y1="80" x2="578" y2="80" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag4)"/>
+      <line x1="700" y1="80" x2="718" y2="80" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag4)"/>
+      <!-- 1 免费引流 -->
+      <rect x="10" y="20" width="130" height="120" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="75" y="38" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">01</text>
+      <text x="75" y="60" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">免费引流</text>
+      <text x="75" y="82" text-anchor="middle" class="node-sub" font-size="10" fill="#666">公区 / 基层 /</text>
+      <text x="75" y="96" text-anchor="middle" class="node-sub" font-size="10" fill="#666">社区义诊</text>
+      <text x="75" y="118" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">→ 0 元</text>
+      <text x="75" y="132" text-anchor="middle" class="node-sub" font-size="9" fill="#888">零成本关注</text>
+      <!-- 2 方案匹配 -->
+      <rect x="150" y="20" width="130" height="120" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="215" y="38" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">02</text>
+      <text x="215" y="60" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">方案匹配</text>
+      <text x="215" y="82" text-anchor="middle" class="node-sub" font-size="10" fill="#666">体质辨识推送</text>
+      <text x="215" y="96" text-anchor="middle" class="node-sub" font-size="10" fill="#666">适配服务+产品</text>
+      <text x="215" y="118" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">→ 推荐</text>
+      <text x="215" y="132" text-anchor="middle" class="node-sub" font-size="9" fill="#888">AI 智能推荐</text>
+      <!-- 3 服务转化 -->
+      <rect x="290" y="20" width="130" height="120" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="355" y="38" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">03</text>
+      <text x="355" y="60" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">服务转化</text>
+      <text x="355" y="82" text-anchor="middle" class="node-sub" font-size="10" fill="#666">三伏灸/膏方</text>
+      <text x="355" y="96" text-anchor="middle" class="node-sub" font-size="10" fill="#666">经络调理/汤包</text>
+      <text x="355" y="118" text-anchor="middle" class="node-sub" font-size="9" fill="#C8A45C" font-weight="600">→ 主要收入</text>
+      <text x="355" y="132" text-anchor="middle" class="node-sub" font-size="9" fill="#888">非医保高客单</text>
+      <!-- 4 交付闭环 -->
+      <rect x="430" y="20" width="130" height="120" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="495" y="38" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">04</text>
+      <text x="495" y="60" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">交付闭环</text>
+      <text x="495" y="82" text-anchor="middle" class="node-sub" font-size="10" fill="#666">交付调理产品或服务</text>
+      <text x="495" y="96" text-anchor="middle" class="node-sub" font-size="10" fill="#666">到院调理或详细辩证</text>
+      <text x="495" y="118" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">→ 完成</text>
+      <text x="495" y="132" text-anchor="middle" class="node-sub" font-size="9" fill="#888">共享中药房对接</text>
+      <!-- 5 持续运营 -->
+      <rect x="570" y="20" width="130" height="120" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="635" y="38" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">05</text>
+      <text x="635" y="60" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">持续运营</text>
+      <text x="635" y="82" text-anchor="middle" class="node-sub" font-size="10" fill="#666">节气养生推送</text>
+      <text x="635" y="96" text-anchor="middle" class="node-sub" font-size="10" fill="#666">健康科普直播</text>
+      <text x="635" y="118" text-anchor="middle" class="node-sub" font-size="9" fill="#4A8B7A" font-weight="600">→ 唤醒</text>
+      <text x="635" y="132" text-anchor="middle" class="node-sub" font-size="9" fill="#888">复购复诊提醒</text>
+      <!-- 6 会员体系 -->
+      <rect x="710" y="20" width="130" height="120" rx="6" fill="#0F1B30" stroke="#C8A45C" stroke-width="2"/>
+      <text x="775" y="38" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">06</text>
+      <text x="775" y="60" text-anchor="middle" class="node-title" font-size="13" fill="#C8A45C">会员体系</text>
+      <text x="775" y="82" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">套餐卡 / 次卡</text>
+      <text x="775" y="96" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">锁定长期用户</text>
+      <text x="775" y="118" text-anchor="middle" class="node-sub" font-size="9" fill="#C8A45C" font-weight="600">→ ★ 长期价值</text>
+      <text x="775" y="132" text-anchor="middle" class="node-sub" font-size="9" fill="#F5EFE2" opacity=".8">LTV 最大化</text>
+      <!-- 底部飞轮回路 -->
+      <path d="M 775 140 Q 775 175 430 175 Q 75 175 75 140" fill="none" stroke="#4A8B7A" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#aj4)"/>
+      <text x="430" y="170" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#4A8B7A">↺ 持续复购 · 越滚越大</text>
+      <!-- 底部说明 -->
+      <rect x="20" y="200" width="820" height="46" rx="5" fill="#F8F6F1" stroke="#C8A45C" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="430" y="218" text-anchor="middle" class="node-title" font-size="12" fill="#0F1B30">🎯 运营转化飞轮</text>
+      <text x="430" y="236" text-anchor="middle" class="node-sub" font-size="10" fill="#666">免费检测引流 → 智能匹配 → 高客单服务 → 交付履约 → 节气唤醒 → 会员锁定 · 6 阶段形成持续复利增长</text>
+    </svg>
+  </div>
+
+  <h3 id="sec-5-4">5.4 场景四：名老中医经验传承与人才培养</h3>
+  <p>解决治未病人才短缺问题，将专家经验数字化沉淀，实现<strong>"以老带新"与能力快速复制</strong>。打破"师带徒"传统模式局限，加速年轻医生成长。</p>
+  <div class="proc">
+    <div class="proc-step hl"><div class="ps-num">1</div><div class="ps-title">经验沉淀</div><div class="ps-desc">名老中医诊疗医案与调理方案自动录入传承系统，挖掘辨证思路与用药规律</div></div>
+    <div class="proc-step"><div class="ps-num">2</div><div class="ps-title">智能体训练</div><div class="ps-desc">基于专家历史数据训练专属名医智能体，复刻辨证风格与方案特点</div></div>
+    <div class="proc-step"><div class="ps-num">3</div><div class="ps-title">临床带教</div><div class="ps-desc">年轻医生/基层医生接诊时调用名医智能体获取参考方案，对比学习辨证思路</div></div>
+    <div class="proc-step"><div class="ps-num">4</div><div class="ps-title">考核提升</div><div class="ps-desc">提供经典医案考核、方案匹配度评估，量化医生学习成长效果</div></div>
+    <div class="proc-step hl"><div class="ps-num">5</div><div class="ps-title">基层复用</div><div class="ps-desc">名医智能体同步开放给基层站点，让基层也能获得专家级的方案指导</div></div>
+  </div>
+
+  <div class="flowchart-wrap">
+    <div class="flowchart-head">
+      <span class="flowchart-head-num">5</span>
+      <h4>名老中医经验传承路径</h4>
+      <span class="fc-sub">人才培养 · 智能体驱动</span>
+    </div>
+    <svg class="flowchart-svg" viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ag5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C8A45C"/></marker>
+        <marker id="aj5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4A8B7A"/></marker>
+      </defs>
+      <!-- 顶部：源 -->
+      <ellipse cx="430" cy="32" rx="180" ry="24" fill="#C8A45C" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="430" y="30" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">👨‍⚕️ 名老中医 临床经验</text>
+      <text x="430" y="48" text-anchor="middle" class="node-sub" font-size="10" fill="#0F1B30">诊疗医案 · 调理方案 · 辨证思路 · 用药规律</text>
+      <!-- 5 阶段连线 -->
+      <line x1="430" y1="56" x2="430" y2="80" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag5)"/>
+      <line x1="170" y1="140" x2="188" y2="140" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag5)"/>
+      <line x1="340" y1="140" x2="358" y2="140" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag5)"/>
+      <line x1="510" y1="140" x2="528" y2="140" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag5)"/>
+      <line x1="680" y1="140" x2="698" y2="140" stroke="#C8A45C" stroke-width="2" marker-end="url(#ag5)"/>
+      <!-- 1 经验沉淀 -->
+      <rect x="20" y="80" width="150" height="120" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="95" y="100" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 01</text>
+      <text x="95" y="122" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">经验沉淀</text>
+      <text x="95" y="144" text-anchor="middle" class="node-sub" font-size="10" fill="#666">诊疗医案自动录入</text>
+      <text x="95" y="160" text-anchor="middle" class="node-sub" font-size="10" fill="#666">挖掘辨证思路</text>
+      <text x="95" y="178" text-anchor="middle" class="node-sub" font-size="10" fill="#666">用药规律抽取</text>
+      <!-- 2 智能体训练 -->
+      <rect x="188" y="80" width="150" height="120" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="263" y="100" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 02</text>
+      <text x="263" y="122" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">智能体训练</text>
+      <text x="263" y="144" text-anchor="middle" class="node-sub" font-size="10" fill="#666">训练专属名医智能体</text>
+      <text x="263" y="160" text-anchor="middle" class="node-sub" font-size="10" fill="#666">复刻辨证风格</text>
+      <text x="263" y="178" text-anchor="middle" class="node-sub" font-size="10" fill="#666">方案特点数字化</text>
+      <!-- 3 临床带教 -->
+      <rect x="358" y="80" width="150" height="120" rx="6" fill="#0F1B30" stroke="#C8A45C" stroke-width="2"/>
+      <text x="433" y="100" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 03</text>
+      <text x="433" y="122" text-anchor="middle" class="node-title" font-size="13" fill="#C8A45C">临床带教</text>
+      <text x="433" y="144" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">年轻医生/基层医生</text>
+      <text x="433" y="160" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">接诊时调用智能体</text>
+      <text x="433" y="178" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">对比学习辨证思路</text>
+      <!-- 4 考核提升 -->
+      <rect x="528" y="80" width="150" height="120" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="603" y="100" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 04</text>
+      <text x="603" y="122" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">考核提升</text>
+      <text x="603" y="144" text-anchor="middle" class="node-sub" font-size="10" fill="#666">经典医案考核</text>
+      <text x="603" y="160" text-anchor="middle" class="node-sub" font-size="10" fill="#666">方案匹配度评估</text>
+      <text x="603" y="178" text-anchor="middle" class="node-sub" font-size="10" fill="#666">量化成长效果</text>
+      <!-- 5 基层复用 -->
+      <rect x="698" y="80" width="150" height="120" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="773" y="100" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C" letter-spacing="2">STEP 05</text>
+      <text x="773" y="122" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">基层复用</text>
+      <text x="773" y="144" text-anchor="middle" class="node-sub" font-size="10" fill="#666">名医智能体下沉</text>
+      <text x="773" y="160" text-anchor="middle" class="node-sub" font-size="10" fill="#666">基层同步开放</text>
+      <text x="773" y="178" text-anchor="middle" class="node-sub" font-size="10" fill="#666">专家级方案指导</text>
+      <!-- 底部回环 -->
+      <path d="M 773 200 Q 773 240 430 240 Q 95 240 95 200" fill="none" stroke="#4A8B7A" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#aj5)"/>
+      <text x="430" y="236" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#4A8B7A">↺ 基层案例持续反哺沉淀</text>
+      <!-- 底部说明 -->
+      <rect x="20" y="260" width="820" height="46" rx="5" fill="#F8F6F1" stroke="#C8A45C" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="430" y="278" text-anchor="middle" class="node-title" font-size="12" fill="#0F1B30">🎯 经验传承价值</text>
+      <text x="430" y="296" text-anchor="middle" class="node-sub" font-size="10" fill="#666">打破传统"师带徒"模式局限 · 让名医经验可复制 · 让基层获得专家级方案指导 · 避免"人走技失"</text>
+    </svg>
+  </div>
+
+  <h3 id="sec-5-5">5.5 场景五：管理驾驶舱与决策支撑</h3>
+  <p>为医院管理者提供全局数据视图，量化治未病工作成效，支撑精细化管理与政策申报。</p>
+  <div class="card-grid cg2">
+    <div class="card"><div class="card-icon">📋</div><div class="card-title">实时运营看板</div><div class="card-desc">展示全院及各基层站点的检测量、服务人次、营收数据、转化率等核心指标。支持按日/周/月/站点多维下钻，一目了然掌握全盘运营情况。</div></div>
+    <div class="card"><div class="card-icon">🧬</div><div class="card-title">人群健康分析</div><div class="card-desc">统计区域居民体质分布、高发健康风险、年龄/性别健康特征，为公共卫生干预与精准健康教育提供数据支撑。</div></div>
+    <div class="card"><div class="card-icon">✅</div><div class="card-title">服务质量监管</div><div class="card-desc">监控各站点服务规范性、方案准确率、用户满意度，自动预警异常数据，确保服务质量均质化。</div></div>
+    <div class="card"><div class="card-icon">📄</div><div class="card-title">数据报表导出</div><div class="card-desc">自动生成月度、季度、年度运营报告，支持一键导出用于项目汇报、政策申报与成果宣传。</div></div>
+  </div>
+  <div class="flowchart-wrap">
+    <div class="flowchart-head">
+      <span class="flowchart-head-num">6</span>
+      <h4>管理驾驶舱数据流架构</h4>
+      <span class="fc-sub">数据汇聚 · 决策支撑</span>
+    </div>
+    <svg class="flowchart-svg" viewBox="0 0 860 380" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ag6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C8A45C"/></marker>
+        <marker id="aj6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4A8B7A"/></marker>
+      </defs>
+      <!-- 顶部：3 大数据源 -->
+      <text x="430" y="22" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">📥 数据采集层 · 多端入口</text>
+      <line x1="150" y1="60" x2="150" y2="80" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag6)"/>
+      <line x1="430" y1="60" x2="430" y2="80" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag6)"/>
+      <line x1="710" y1="60" x2="710" y2="80" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag6)"/>
+      <rect x="20" y="80" width="260" height="56" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="150" y="100" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🏥 院内公区</text>
+      <text x="150" y="120" text-anchor="middle" class="node-sub" font-size="10" fill="#666">门诊大厅/导诊台 · 自助检测</text>
+      <rect x="300" y="80" width="260" height="56" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="430" y="100" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🏥 院内治未病科</text>
+      <text x="430" y="120" text-anchor="middle" class="node-sub" font-size="10" fill="#666">标准化服务 · 调理转化</text>
+      <rect x="580" y="80" width="260" height="56" rx="6" fill="#FFFFFF" stroke="#0F1B30" stroke-width="1.5"/>
+      <text x="710" y="100" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🏘 基层站点</text>
+      <text x="710" y="120" text-anchor="middle" class="node-sub" font-size="10" fill="#666">乡镇中医馆/村卫生室 · 同型号</text>
+      <!-- 汇聚 -->
+      <line x1="150" y1="136" x2="430" y2="180" stroke="#C8A45C" stroke-width="1.5"/>
+      <line x1="430" y1="136" x2="430" y2="180" stroke="#C8A45C" stroke-width="1.5"/>
+      <line x1="710" y1="136" x2="430" y2="180" stroke="#C8A45C" stroke-width="1.5"/>
+      <text x="430" y="156" text-anchor="middle" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C">↓ 全量数据汇聚 ↓</text>
+      <rect x="180" y="180" width="500" height="56" rx="6" fill="#FFFCF5" stroke="#C8A45C" stroke-width="2"/>
+      <text x="430" y="200" text-anchor="middle" class="node-title" font-size="13" fill="#0F1B30">🗄 县域治未病管理平台（数据中台）</text>
+      <text x="430" y="220" text-anchor="middle" class="node-sub" font-size="10" fill="#666">居民健康档案 · 服务记录 · 营收数据 · 体质分布</text>
+      <!-- 推送到驾驶舱 -->
+      <line x1="430" y1="236" x2="430" y2="256" stroke="#C8A45C" stroke-width="1.5" marker-end="url(#ag6)"/>
+      <text x="445" y="250" class="node-sub" font-size="10" font-weight="600" fill="#C8A45C">↓</text>
+      <!-- 驾驶舱分析 -->
+      <rect x="120" y="258" width="620" height="56" rx="6" fill="#0F1B30" stroke="#C8A45C" stroke-width="2"/>
+      <text x="430" y="278" text-anchor="middle" class="node-title" font-size="13" fill="#C8A45C">📊 总院管理驾驶舱 · 实时分析决策</text>
+      <text x="430" y="296" text-anchor="middle" class="node-sub" font-size="10" fill="#F5EFE2">多维下钻 · 按日/周/月/站点 · 异常预警 · 数据看板</text>
+      <!-- 4 个输出 -->
+      <line x1="430" y1="314" x2="430" y2="328" stroke="#4A8B7A" stroke-width="1.2" stroke-dasharray="3,2"/>
+      <path d="M 430 328 L 130 328 L 130 344" fill="none" stroke="#4A8B7A" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#aj6)"/>
+      <path d="M 430 328 L 330 328 L 330 344" fill="none" stroke="#4A8B7A" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#aj6)"/>
+      <path d="M 430 328 L 530 328 L 530 344" fill="none" stroke="#4A8B7A" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#aj6)"/>
+      <path d="M 430 328 L 730 328 L 730 344" fill="none" stroke="#4A8B7A" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#aj6)"/>
+      <rect x="20" y="346" width="220" height="30" rx="5" fill="#F8F6F1" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="130" y="365" text-anchor="middle" class="node-sub" font-size="11" font-weight="600" fill="#0F1B30">📋 实时运营看板</text>
+      <rect x="250" y="346" width="180" height="30" rx="5" fill="#F8F6F1" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="340" y="365" text-anchor="middle" class="node-sub" font-size="11" font-weight="600" fill="#0F1B30">🧬 人群健康分析</text>
+      <rect x="440" y="346" width="180" height="30" rx="5" fill="#F8F6F1" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="530" y="365" text-anchor="middle" class="node-sub" font-size="11" font-weight="600" fill="#0F1B30">✅ 服务质量监管</text>
+      <rect x="630" y="346" width="210" height="30" rx="5" fill="#F8F6F1" stroke="#4A8B7A" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="735" y="365" text-anchor="middle" class="node-sub" font-size="11" font-weight="600" fill="#0F1B30">📄 数据报表导出</text>
+    </svg>
+  </div>
+
+</section>
+
+<!-- ===== 六、创收分析 ===== -->
+<section id="sec-6-income">
+  <h2>六、创收分析 — 钱从哪里来</h2>
+  <p>传统治未病科营收来源单一，主要依赖门诊诊疗。引入 AI 四诊仪 + 智能导诊模式后，营收从"单一诊疗"扩展为<strong>五大创收渠道</strong>，形成持续复利增长。<strong>智能导诊</strong>是从"免费检测"到"实际消费"的关键转化引擎。</p>
+
+  <!-- 5 渠道收入结构图（环形 + 横向条形） -->
+  <div class="card highlight" style="padding:24px 28px;margin:20px 0;background:linear-gradient(135deg,rgba(200,164,92,.06),rgba(200,164,92,.02));border:2px solid var(--gold);">
+    <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
+      <!-- 左侧：90万核心数字 -->
+      <div style="text-align:center;min-width:140px;">
+        <div style="font-family:'Noto Serif SC',serif;font-size:52px;font-weight:900;color:var(--gold);line-height:1;">~90<span style="font-size:24px;">万</span></div>
+        <div style="font-size:13px;color:var(--m);margin-top:6px;font-weight:600;">预期年总营收</div>
+        <div style="font-size:11px;color:#888;margin-top:2px;">90% 来自非医保</div>
+      </div>
+      <!-- 右侧：5 渠道横向条形图 -->
+      <div style="flex:1;min-width:520px;">
+        <div style="font-size:13px;color:var(--i);font-weight:600;margin-bottom:12px;">五大渠道收入分布（单位：万元）</div>
+
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:90px;font-size:12px;color:var(--i);">💆 特色调理</div>
+          <div style="flex:1;height:24px;background:rgba(15,27,48,.04);border-radius:3px;position:relative;overflow:hidden;">
+            <div style="position:absolute;left:0;top:0;height:100%;width:37%;background:linear-gradient(90deg,#C8A45C,#A8865A);border-radius:3px;"></div>
+            <div style="position:absolute;left:37%;top:0;height:100%;display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:700;color:var(--i);">33.6 万</div>
+          </div>
+          <div style="width:50px;font-size:11px;color:#888;">37%</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:90px;font-size:12px;color:var(--i);">🧭 智能导诊</div>
+          <div style="flex:1;height:24px;background:rgba(15,27,48,.04);border-radius:3px;position:relative;overflow:hidden;">
+            <div style="position:absolute;left:0;top:0;height:100%;width:33%;background:linear-gradient(90deg,#A8865A,#8B7E6A);border-radius:3px;"></div>
+            <div style="position:absolute;left:33%;top:0;height:100%;display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:700;color:var(--i);">30 万</div>
+          </div>
+          <div style="width:50px;font-size:11px;color:#888;">33%</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:90px;font-size:12px;color:var(--i);">🛒 药食同源</div>
+          <div style="flex:1;height:24px;background:rgba(15,27,48,.04);border-radius:3px;position:relative;overflow:hidden;">
+            <div style="position:absolute;left:0;top:0;height:100%;width:20%;background:linear-gradient(90deg,#0F1B30,#1A2744);border-radius:3px;"></div>
+            <div style="position:absolute;left:20%;top:0;height:100%;display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:700;color:var(--i);">18 万</div>
+          </div>
+          <div style="width:50px;font-size:11px;color:#888;">20%</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:90px;font-size:12px;color:var(--i);">🏘 基层转诊</div>
+          <div style="flex:1;height:24px;background:rgba(15,27,48,.04);border-radius:3px;position:relative;overflow:hidden;">
+            <div style="position:absolute;left:0;top:0;height:100%;width:9%;background:linear-gradient(90deg,#4A8B7A,#3D7A6E);border-radius:3px;"></div>
+            <div style="position:absolute;left:9%;top:0;height:100%;display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:700;color:var(--i);">8.4 万</div>
+          </div>
+          <div style="width:50px;font-size:11px;color:#888;">9%</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:90px;font-size:12px;color:#888;">🔍 免费检测</div>
+          <div style="flex:1;height:24px;background:rgba(15,27,48,.02);border-radius:3px;border:1px dashed var(--line);position:relative;">
+            <div style="position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;padding-left:12px;font-size:12px;font-weight:700;color:var(--gold);">9,000+ 人次/年 · 免费引流</div>
+          </div>
+          <div style="width:50px;font-size:11px;color:#888;">不计</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 客户转化漏斗图 -->
+  <div class="card" style="padding:24px 28px;margin:20px 0;border:1px solid var(--line);">
+    <div style="font-size:14px;font-weight:600;color:var(--i);margin-bottom:14px;">📊 流量转化漏斗：从"路过检测"到"实际消费"的全链路</div>
+    <div style="display:flex;align-items:stretch;gap:4px;height:200px;position:relative;">
+      <!-- 漏斗 5 层 -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="background:linear-gradient(180deg,#C8A45C,#A8865A);width:90%;height:36px;border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;box-shadow:0 2px 4px rgba(0,0,0,.08);">9,000+</div>
+        <div style="font-size:11px;color:var(--m);margin-top:6px;text-align:center;">年度检测人次<br><strong style="color:var(--i);">免费</strong></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="background:linear-gradient(180deg,#4A8B7A,#3D7A6E);width:75%;height:54px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;border-radius:4px 4px 0 0;box-shadow:0 2px 4px rgba(0,0,0,.08);">1,500+</div>
+        <div style="font-size:11px;color:var(--m);margin-top:6px;text-align:center;">智能导诊预约<br><strong style="color:var(--i);">转化 15-20%</strong></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="background:linear-gradient(180deg,#A8865A,#8B7E6A);width:60%;height:78px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;border-radius:4px 4px 0 0;box-shadow:0 2px 4px rgba(0,0,0,.08);">800+</div>
+        <div style="font-size:11px;color:var(--m);margin-top:6px;text-align:center;">到院看病<br><strong style="color:var(--i);">转化 50%</strong></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="background:linear-gradient(180deg,#0F1B30,#1A2744);width:48%;height:110px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700;font-size:14px;border-radius:4px 4px 0 0;box-shadow:0 2px 4px rgba(0,0,0,.12);">400+</div>
+        <div style="font-size:11px;color:var(--m);margin-top:6px;text-align:center;">特色调理复购<br><strong style="color:var(--i);">转化 50%</strong></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="background:linear-gradient(180deg,#C8A45C,#A8865A);width:36%;height:150px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;border-radius:4px 4px 0 0;box-shadow:0 2px 4px rgba(0,0,0,.12);">180+</div>
+        <div style="font-size:11px;color:var(--m);margin-top:6px;text-align:center;">长期会员<br><strong style="color:var(--i);">稳定 LTV</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 渠道卡片（紧凑版） -->
+  <h3 style="margin:30px 0 16px;">5 大创收渠道 · 一图速览</h3>
+  <div class="card-grid cg3">
+    <div class="card highlight" style="padding:18px 20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:rgba(200,164,92,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🔍</div>
+        <div class="card-title" style="margin:0;font-size:15px;flex:1;">健康检测</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:900;color:var(--gold);">免费</div>
+      </div>
+      <div style="font-size:12px;color:var(--m);line-height:1.6;">
+        纯流量入口 · 县域 9,000+ 人次/年<br>
+        <span style="color:var(--jade);font-weight:600;">零门槛引流，为渠道 2/3/4 输送客户</span>
+      </div>
+    </div>
+
+    <div class="card highlight" style="padding:18px 20px;border:2px solid var(--gold);background:linear-gradient(135deg,rgba(200,164,92,.08),rgba(200,164,92,.02));">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:rgba(200,164,92,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🧭</div>
+        <div class="card-title" style="margin:0;font-size:15px;flex:1;">智能导诊 <span style="font-size:10px;color:var(--gold);font-weight:600;letter-spacing:1px;">★关键</span></div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:900;color:var(--gold);">30 万</div>
+      </div>
+      <div style="font-size:12px;color:var(--m);line-height:1.6;">
+        AI 导诊 + 预约挂号（占 33%）<br>
+        <span style="color:var(--jade);font-weight:600;">把"路过检测"转为"到院消费"</span>
+      </div>
+    </div>
+
+    <div class="card highlight" style="padding:18px 20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:rgba(74,139,122,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">💆</div>
+        <div class="card-title" style="margin:0;font-size:15px;flex:1;">特色调理</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:900;color:var(--jade);">33.6 万</div>
+      </div>
+      <div style="font-size:12px;color:var(--m);line-height:1.6;">
+        三伏灸/膏方/经络（占 37%·最高）<br>
+        <span style="color:var(--jade);font-weight:600;">非医保·利润 60-70%·高复购</span>
+      </div>
+    </div>
+
+    <div class="card highlight" style="padding:18px 20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:rgba(168,134,90,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🛒</div>
+        <div class="card-title" style="margin:0;font-size:15px;flex:1;">药食同源</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:900;color:var(--g);">18 万</div>
+      </div>
+      <div style="font-size:12px;color:var(--m);line-height:1.6;">
+        茶饮/汤包/膏方（占 20%）<br>
+        <span style="color:var(--jade);font-weight:600;">公区商品区·"路过顺便买"</span>
+      </div>
+    </div>
+
+    <div class="card highlight" style="padding:18px 20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <div style="width:32px;height:32px;background:rgba(15,27,48,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🏘</div>
+        <div class="card-title" style="margin:0;font-size:15px;flex:1;">基层转诊</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:18px;font-weight:900;color:var(--ink);">8.4 万</div>
+      </div>
+      <div style="font-size:12px;color:var(--m);line-height:1.6;">
+        3 个基层站点分成（占 9%）<br>
+        <span style="color:var(--jade);font-weight:600;">3→12 个站点可倍增</span>
+      </div>
+    </div>
+
+    <div class="card highlight" style="padding:18px 20px;background:linear-gradient(135deg,rgba(200,164,92,.06),rgba(74,139,122,.04));">
+      <div style="text-align:center;">
+        <div style="font-size:13px;color:var(--m);margin-bottom:4px;">⭐ 关键转化引擎</div>
+        <div style="font-size:13px;color:var(--i);line-height:1.7;font-weight:500;">
+          检测<strong style="color:var(--gold);">免费</strong>引流 → <strong style="color:var(--g);">智能导诊</strong> → 到院看病 → 调理/产品 → 复购/会员
+        </div>
+        <div style="font-size:11px;color:#888;margin-top:8px;">
+          渠道 2 是从"流量"到"营收"的<strong>关键转化点</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROI 3 大指标 (keep together with following callout) -->
+  <div class="roi-block" style="page-break-inside: avoid !important; break-inside: avoid !important;">
+  <div class="card-grid cg3" style="margin:24px 0;">
+    <div class="card highlight" style="text-align:center;padding:24px 20px;">
+      <div style="font-family:'Noto Serif SC',serif;font-size:42px;font-weight:900;color:var(--gold);line-height:1;">~50 万</div>
+      <div style="font-size:14px;color:var(--m);font-weight:600;margin-top:6px;">年净收益</div>
+      <div style="font-size:11px;color:#999;margin-top:6px;">综合成本率 ~45%</div>
+    </div>
+    <div class="card highlight" style="text-align:center;padding:24px 20px;">
+      <div style="font-family:'Noto Serif SC',serif;font-size:42px;font-weight:900;color:var(--gold);line-height:1;">~16 月</div>
+      <div style="font-size:14px;color:var(--m);font-weight:600;margin-top:6px;">投资回收期</div>
+      <div style="font-size:11px;color:#999;margin-top:6px;">基于进阶试点版 111 万投入</div>
+    </div>
+    <div class="card highlight" style="text-align:center;padding:24px 20px;">
+      <div style="font-family:'Noto Serif SC',serif;font-size:42px;font-weight:900;color:var(--gold);line-height:1;">~95%</div>
+      <div style="font-size:14px;color:var(--m);font-weight:600;margin-top:6px;">非医保收入</div>
+      <div style="font-size:11px;color:#999;margin-top:6px;">4 大渠道全部自费</div>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <strong>厦门中医院已验证：</strong>通过"公区四诊仪 + 调理商品区"的最简方案，<strong>调理商品销售额 +30%</strong>。清流县以<strong>一步到位的全功能方案</strong>起步，增长曲线比厦门更陡，<strong>首年 90 万为合理预期，2-3 年突破 200 万</strong>。
+  </div>
+  </div>
+</section>
+
+<!-- ===== 七、系统部署 ===== -->
+<section id="sec-7">
+  <h2>七、系统部署与对接方案</h2>
+  <h3>私有化部署方案</h3>
+  <ul class="bullet-list">
+    <li><strong>部署模式：</strong>支持完全院内私有化部署，所有模型、数据、业务系统均运行在医院本地服务器，物理隔离，数据不出院。</li>
+    <li><strong>信创适配：</strong>兼容麒麟、统信等国产操作系统，支持鲲鹏、海光芯片，满足医院信创建设要求。</li>
+    <li><strong>安全机制：</strong>配备数据加密、权限管控、日志审计等安全机制，保障医疗数据安全。</li>
+    <li><strong>服务器配置：</strong>推荐采用四服务器集群私有化部署架构（应用服务器 4核16G / 算法服务器 16核32G / 存储服务器 4核16G / 前置服务器 4核16G）。支持利旧医院现有硬件资源。</li>
+  </ul>
+  <h3>系统对接方案</h3>
+  <div class="card-grid cg2">
+    <div class="card highlight"><div class="card-title">🔌 HIS 系统对接</div><div class="card-desc">实现患者基本信息同步、处方信息流转、收费结算对接。支持健康档案数据互通，检测报告可直接归档至患者健康档案。</div></div>
+    <div class="card highlight"><div class="card-title">🏛 区域卫生平台对接</div><div class="card-desc">治未病检测数据与调理方案可同步至居民电子健康档案，丰富公卫数据。对接双向转诊通道，实现基层与总院的线上转诊流转。</div></div>
+    <div class="card highlight"><div class="card-title">💊 共享中药房对接</div><div class="card-desc">处方直接流转至共享中药房系统，完成审方、调剂、煎煮、配送全流程。用户可在小程序实时查看订单状态与物流信息。</div></div>
+    <div class="card highlight"><div class="card-title">🏘 基层站点部署</div><div class="card-desc">基层设备部署简洁高效，接通电源与网络即可使用，无需专业 IT 人员维护。支持 4G 无线专网与有线网络两种模式。所有数据统一同步至总院平台，由总院进行集中管理与运维。</div></div>
+  </div>
+</section>
+
+<!-- ===== 八、商务报价 ===== -->
+<section id="sec-8">
+  <h2>八、商务报价方案</h2>
+  <p>本项目提供三种梯度建设方案，适配不同阶段的建设需求。每项明列<strong>数量 · 单价 · 小计</strong>，可按预算与规划分步实施。</p>
+
+<div class="price-card">
+      <div class="pn">基础标杆版<span class="ps" style="display:inline;margin:0 0 0 8px;color:var(--gold);font-weight:600;">· 院内 2 台起步</span></div>
+      <div class="ps">适合首期验证科室模式</div>
+      <table class="price-tbl">
+        <thead><tr><th style="width:48%;">项目</th><th style="width:18%;">数量</th><th style="width:34%;">小计</th></tr></thead>
+        <tbody>
+          <tr><td>灵机四诊仪</td><td>2 台</td><td><b>~16 万</b></td></tr>
+          <tr><td>治未病管理系统</td><td>1 套</td><td><b>~45 万</b></td></tr>
+          <tr><td>C 端小程序</td><td>1 套</td><td><b>~5 万</b></td></tr>
+          <tr><td>大模型私有化部署</td><td>1 套</td><td><b>~30 万</b></td></tr>
+          <tr><td>运维运营指导</td><td>1 年</td><td><b>~2 万</b></td></tr>
+        </tbody>
+        <tfoot><tr><td>合计</td><td colspan="2"><span style="font-size:24px;font-weight:900;color:var(--gold);">≈ 98 万</span></td></tr></tfoot>
+      </table>
+      <div style="font-size:11px;color:#999;margin-top:8px;">私有化部署：利旧医院现有服务器资源 · 适用于先院内跑通场景</div>
+    </div>
+
+    <div class="price-card feat">
+      <div class="pn">⭐ 进阶试点版<span class="ps" style="display:inline;margin:0 0 0 8px;color:var(--gold);font-weight:600;">· 推荐方案</span></div>
+      <div class="ps">院内 2 台 + 基层 5 台（7 台设备）· 启动县域网络</div>
+      <table class="price-tbl">
+        <thead><tr><th style="width:48%;">项目</th><th style="width:18%;">数量</th><th style="width:34%;">小计</th></tr></thead>
+        <tbody>
+          <tr><td>灵机四诊仪</td><td>7 台</td><td><b>~56 万</b></td></tr>
+          <tr><td>治未病管理系统</td><td>1 套</td><td><b>~45 万</b></td></tr>
+          <tr><td>C 端小程序</td><td>1 套</td><td><b>~5 万</b></td></tr>
+          <tr><td>系统对接实施</td><td>1 项</td><td><b>~5 万</b></td></tr>
+          <tr><td>大模型私有化部署</td><td>1 套</td><td><b>~30 万</b></td></tr>
+          <tr><td>运维运营指导</td><td>1 年</td><td><b>~2 万</b></td></tr>
+        </tbody>
+        <tfoot><tr><td>合计</td><td colspan="2"><span style="font-size:24px;font-weight:900;color:var(--gold);">≈ 143 万</span></td></tr></tfoot>
+      </table>
+      <div style="font-size:11px;color:var(--gold);margin-top:8px;">含现场部署 + 全员操作培训 + 业务运营指导</div>
+    </div>
+
+    <div class="price-card">
+      <div class="pn">全县覆盖版<span class="ps" style="display:inline;margin:0 0 0 8px;color:var(--gold);font-weight:600;">· 全县一张网</span></div>
+      <div class="ps">院内 + 12 个乡镇（14 台设备）· 全市县标杆</div>
+      <table class="price-tbl">
+        <thead><tr><th style="width:48%;">项目</th><th style="width:18%;">数量</th><th style="width:34%;">小计</th></tr></thead>
+        <tbody>
+          <tr><td>灵机四诊仪</td><td>14 台</td><td><b>~104 万</b></td></tr>
+          <tr><td>治未病管理系统</td><td>1 套</td><td><b>~45 万</b></td></tr>
+          <tr><td>名老中医传承系统</td><td>1 套</td><td><b>~50 万</b></td></tr>
+          <tr><td>辅助诊疗系统</td><td>1 套</td><td><b>~50 万</b></td></tr>
+          <tr><td>C 端小程序</td><td>1 套</td><td><b>~5 万</b></td></tr>
+          <tr><td>系统对接实施</td><td>1 项</td><td><b>~5 万</b></td></tr>
+          <tr><td>大模型私有化部署</td><td>1 套</td><td><b>~30 万</b></td></tr>
+          <tr><td>运维运营指导</td><td>1 年</td><td><b>~2 万</b></td></tr>
+        </tbody>
+        <tfoot><tr><td>合计</td><td colspan="2"><span style="font-size:24px;font-weight:900;color:var(--gold);">≈ 291 万</span></td></tr></tfoot>
+      </table>
+      <div style="font-size:11px;color:#999;margin-top:8px;">一次性建成全县域样板 · 可申报省市级示范项目</div>
+    </div>
+
+</section>
+
+<!-- ===== 九、代表客户案例 ===== -->
+<section id="sec-9">
+  <h2 id="sec-9-1">九、代表客户案例</h2>
+
+  <h3>🏥 中医院类合作案例（重点参考）</h3>
+  <p>下列为已落地或正在合作的中医院、中医馆及养生机构，覆盖公立三甲、连锁中医馆、社区中医等不同类型，可作为清流县总医院后续模式扩展的参考。</p>
+  <div class="card-grid cg2" style="margin:12px 0;">
+    <div class="card highlight"><div class="card-title">🏥 厦门中医院（北京中医药大学东直门医院）</div><div class="card-desc">福建省龙头三甲中医医院·公区四诊仪 + 调理商品区·<strong style="color:var(--gold);">已验证：调理商品销售额 +30%</strong></div></div>
+    <div class="card highlight"><div class="card-title">🏥 张步桃中医诊所</div><div class="card-desc">厦门知名中医诊所·中医智能化探索伙伴</div></div>
+    <div class="card highlight"><div class="card-title">🏥 片仔癀国医堂</div><div class="card-desc">福建本地中医药品牌·中医数字化合作伙伴</div></div>
+    <div class="card highlight"><div class="card-title">🏥 中医馆·存谦医生</div><div class="card-desc">厦门中医馆连锁·四诊仪用户管理合作</div></div>
+    <div class="card highlight"><div class="card-title">🏥 广州中医药大学</div><div class="card-desc">高等中医药院校·科研合作与临床辅助</div></div>
+    <div class="card highlight"><div class="card-title">🏥 广州锦小春中医连锁</div><div class="card-desc">广州连锁中医馆·多门店设备合作</div></div>
+    <div class="card highlight"><div class="card-title">🏥 长治多家医院</div><div class="card-desc">山西长治区域·多家中医院设备铺点</div></div>
+    <div class="card highlight"><div class="card-title">🏥 南通医博肛肠医院</div><div class="card-desc">江苏南通·专科医院 + 中医调理结合</div></div>
+  </div>
+
+  <h3>🤝 完整合作案例（按地区）</h3>
+  <p>除中医院外，公司还与以下机构建立了合作关系，覆盖健康管理、康养、AI 科技、银行、院校等多种类型：</p>
+  <div class="card-grid cg3" style="margin:12px 0;">
+    <div class="card"><div class="card-title">📍 厦门地区</div><div class="card-desc" style="font-size:12px;">长庚医院 · 鹭燕大药房 · 中国福彩彩票 AI 养生茶社区茶空间 · 厦门民政智慧养老服务中心 · 厦门健康医疗大数据中心 · 华为全球唯一鸿蒙展厅 · 厦门海关职工之家 · 厦门农业银行·农银人寿 · 厦门手佳连锁 · 万翔网商 · 厦门农村商业银行</div></div>
+    <div class="card"><div class="card-title">📍 福州地区</div><div class="card-desc" style="font-size:12px;">福州福利院 · 福建省人工智能中心 · 福州三谷里 SPA · 福州乐福生健康科技（3 台）· 福州市杏华科技</div></div>
+    <div class="card"><div class="card-title">📍 漳州地区</div><div class="card-desc" style="font-size:12px;">漳州闽南师范学院 · 漳州卫生职业学院 · 漳州长泰轻食养</div></div>
+    <div class="card"><div class="card-title">📍 泉州地区</div><div class="card-desc" style="font-size:12px;">泉州惠安新清瘦 SPA</div></div>
+    <div class="card"><div class="card-title">📍 三明地区</div><div class="card-desc" style="font-size:12px;">政府新医疗中心</div></div>
+    <div class="card"><div class="card-title">📍 山西地区</div><div class="card-desc" style="font-size:12px;">长治康养茶饮馆 · 太原国邦药业</div></div>
+    <div class="card"><div class="card-title">📍 北京地区</div><div class="card-desc" style="font-size:12px;">北京西山康养温泉酒店 · 中央党校（行政管理学院）离退休干部局</div></div>
+    <div class="card"><div class="card-title">📍 浙江地区</div><div class="card-desc" style="font-size:12px;">金华健康小屋项目</div></div>
+    <div class="card"><div class="card-title">📍 广州地区</div><div class="card-desc" style="font-size:12px;">深圳膳行机器人总部 · 广东揭阳普宁市心雪美容</div></div>
+    <div class="card"><div class="card-title">📍 上海地区</div><div class="card-desc" style="font-size:12px;">美年大健康体检中心 · 上海浦东区瑶怡科技</div></div>
+    <div class="card"><div class="card-title">📍 山东地区</div><div class="card-desc" style="font-size:12px;">山东青岛赵阳眼科 · 山东烟台明溪健康 · 山东济南善能养老</div></div>
+    <div class="card"><div class="card-title">📍 东北地区</div><div class="card-desc" style="font-size:12px;">沈阳益天春城健康连锁</div></div>
+    <div class="card"><div class="card-title">📍 陕西地区</div><div class="card-desc" style="font-size:12px;">西安吴大芪实业</div></div>
+    <div class="card"><div class="card-title">📍 宁夏地区</div><div class="card-desc" style="font-size:12px;">宁夏跃马商贸（医疗器械）</div></div>
+    <div class="card"><div class="card-title">📍 贵州地区</div><div class="card-desc" style="font-size:12px;">贵州代发贵</div></div>
+    <div class="card"><div class="card-title">📍 云南地区</div><div class="card-desc" style="font-size:12px;">云南文山州博采生物</div></div>
+  </div>
+
+</section>
+
+<!-- ===== 十、为什么选我们 · 实施规划 · 售后服务 ===== -->
+<section id="sec-10">
+  <h2>十、为什么选我们 · 实施规划 · 售后服务</h2>
+
+  <h3>为什么选择观健在</h3>
+  <p>AI 中医设备行业目前有三类玩家：<strong>设备型厂商</strong>（卖硬件）、<strong>算法型厂商</strong>（卖软件）、<strong>管理型厂商</strong>（卖平台）。观健在是少数同时具备<strong>硬件自研 + AI 算法 + 软件系统 + 运营陪跑</strong>全链条能力的厂商。</p>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div class="why-icon">🔗</div>
+      <div class="why-title">软硬一体完整闭环</div>
+      <div class="why-desc">从四诊仪硬件到大模型算法，从管理软件到小程序，<strong>一家全部自有</strong>。避免多厂商对接扯皮、责任不清、升级不同步的问题。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div class="why-icon">🏥</div>
+      <div class="why-title">适配县域医共体的区域化方案</div>
+      <div class="why-desc">不是简单把城市三甲医院的方案搬到县城，而是<strong>围绕县域医共体架构</strong>（总院 + 卫生院）专门设计"1+N"县乡村一体化服务网络，分级诊疗、双向转诊原生支持。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div class="why-icon">💰</div>
+      <div class="why-title">可落地的营收增长模型</div>
+      <div class="why-desc">不只卖工具，更输出<strong>运营方法论</strong>。从"公区引流 → 调理专柜 → 小程序复购 → 会员体系"完整转化链路，帮科室从单纯诊疗收费扩展到多元化营收。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <div class="why-icon">🎓</div>
+      <div class="why-title">厦大 AI 系产学研背景</div>
+      <div class="why-desc">依托<strong>厦门大学人工智能系</strong>技术积累。可联合开展临床研究、课题申报，助力医院学科建设与等级评审。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">05</div>
+      <div class="why-icon">🛡️</div>
+      <div class="why-title">信创适配与数据安全</div>
+      <div class="why-desc">私有化部署，兼容麒麟/统信 + 鲲鹏/海光信创环境。医疗数据完全本地化，满足医院信息安全要求。</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">06</div>
+      <div class="why-icon">📚</div>
+      <div class="why-title">名医智能体数字化传承</div>
+      <div class="why-desc">帮助医院把<strong>本地名老中医的临床经验</strong>沉淀为数字资产，避免"人走技失"，让基层医生也能获得专家级指导。</div>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <strong>一句话总结：</strong>我们不只是卖一台设备，是给清流县总医院一套完整的<strong>"硬件 + AI 系统 + 运营陪跑"</strong>一体化解决方案。
+  </div>
+
+  <h3 id="sec-10-3">售后服务体系</h3>
+  <div class="card-grid cg3">
+    <div class="card"><div class="card-icon">☎️</div><div class="card-title">01 技术支持</div><div class="card-desc">提供技术支持，必要时上门响应。</div></div>
+    <div class="card"><div class="card-icon">🛡️</div><div class="card-title">02 运维服务</div><div class="card-desc">定期系统巡检、安全加固、数据备份，保障系统稳定运行。</div></div>
+    <div class="card"><div class="card-icon">🔄</div><div class="card-title">03 迭代升级</div><div class="card-desc">每季度提供功能版本更新，每年至少 2 次算法模型升级，持续提升产品能力。</div></div>
+    <div class="card"><div class="card-icon">👥</div><div class="card-title">04 运营陪跑</div><div class="card-desc">首年提供专属运营顾问，定期输出运营建议与活动方案，协助科室营收增长。</div></div>
+    <div class="card"><div class="card-icon">📖</div><div class="card-title">05 培训服务</div><div class="card-desc">提供持续的操作培训、业务培训，支持新入职人员带教。</div></div>
+    <div class="card"><div class="card-icon">🔬</div><div class="card-title">06 科研支持</div><div class="card-desc">支持联合发表论文、申报课题，共享学术资源与行业专家网络。</div></div>
+  </div>
+</section>
+
+<!-- ===== 总结 ===== -->
+<section id="sec-summary">
+  <h2>总结与展望</h2>
+  <p>本方案立足清流县总医院实际需求，以<strong>"务实落地、成效先行、分步推进"</strong>为原则，通过 AI 技术赋能治未病科室建设与基层服务下沉，不仅能快速补齐科室服务能力短板、打造区域特色亮点，更能构建可持续的运营模式，实现社会效益与经济效益的双重提升。</p>
+
+  <div class="card-grid cg2">
+    <div class="card highlight"><div class="card-icon">🏆</div><div class="card-title" style="font-size:20px;color:var(--gold);">务实落地</div><div class="card-desc" style="font-size:15px;">快速补齐科室服务能力短板 · 打造区域特色亮点 · 构建可持续运营模式 · 首期 8 周上线 · 11 月回收投资</div></div>
+    <div class="card" style="background:var(--ink);border:2px solid var(--gold);"><div class="card-icon">🌟</div><div class="card-title" style="font-size:20px;color:var(--cream);">共同探索『清流模式』</div><div class="card-desc" style="font-size:15px;color:var(--cream);opacity:.9;">观健在作为福建本土 AI 中医领军企业，将以成熟的产品体系、丰富的落地经验与贴身的本地化服务，全力配合清流县总医院打造三明市县域治未病标杆项目，共同探索中医药现代化的"清流模式"。</div></div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+// Sidebar scroll spy
+const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
+const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY + 120;
+  let current = sections[0];
+  sections.forEach(s => { if (s.offsetTop <= scrollPos) current = s; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current?.id));
+});
+
+// Smooth scroll
+navLinks.forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const target = document.querySelector(a.getAttribute('href'));
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+</script>
+</body>
+</html>
