@@ -2,12 +2,15 @@ name: Build APK
 
 on:
   push:
-    branches: [main, master]
+    paths:
+      - 'parent-guard-android/**'
+      - '.github/workflows/build-apk.yml'
   workflow_dispatch:  # 手动触发
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,36 +21,48 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          android-version: '34'
+          build-tools-version: '34.0.0'
 
-      - name: Grant execute permission
-        run: chmod +x gradlew || true
+      - name: Make gradlew executable
+        run: chmod +x parent-guard-android/gradlew 2>/dev/null || true
+
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > parent-guard-android/local.properties
 
       - name: Build Parent APK
-        run: |
-          cd parent-guard-android
-          gradle wrapper --gradle-version 8.5 2>/dev/null || true
-          ./gradlew :app:assembleDebug --no-daemon
+        run: cd parent-guard-android && gradle :app:assembleDebug --no-daemon --stacktrace 2>&1 | tail -50
 
       - name: Build Child APK
+        run: cd parent-guard-android && gradle :child:assembleDebug --no-daemon --stacktrace 2>&1 | tail -50
+
+      - name: Verify APK files
         run: |
-          cd parent-guard-android
-          ./gradlew :child:assembleDebug --no-daemon
+          echo "=== APK files produced ==="
+          find parent-guard-android -name "*.apk" -type f 2>/dev/null
+          ls -la parent-guard-android/app/build/outputs/apk/debug/ 2>/dev/null
+          ls -la parent-guard-android/child/build/outputs/apk/debug/ 2>/dev/null
 
       - name: Upload Parent APK
         uses: actions/upload-artifact@v4
         with:
           name: parent-guard-parent-debug
           path: parent-guard-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
 
       - name: Upload Child APK
         uses: actions/upload-artifact@v4
         with:
           name: parent-guard-child-debug
           path: parent-guard-android/child/build/outputs/apk/debug/child-debug.apk
+          if-no-files-found: error
 
       - name: Summary
+        if: always()
         run: |
           echo "## 📱 APK Build Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
