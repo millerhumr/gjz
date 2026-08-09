@@ -21,47 +21,63 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Android SDK (manual)
+      - name: Setup Android SDK
         run: |
-          # 下载并安装 Android cmdline-tools
           ANDROID_SDK_ROOT=$HOME/android-sdk
           mkdir -p $ANDROID_SDK_ROOT/cmdline-tools
           cd /tmp
-          echo "=== Downloading cmdline-tools ==="
           wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O cmdline.zip
-          echo "=== Extracting ==="
           unzip -q cmdline.zip
           mv cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools/latest
-          echo "=== Installing packages ==="
           export ANDROID_HOME=$ANDROID_SDK_ROOT
-          export ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
           export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
           yes | sdkmanager --licenses > /dev/null 2>&1
           sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0" > /tmp/sdkmanager.log 2>&1
-          echo "=== SDK installed ==="
-          ls $ANDROID_SDK_ROOT
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
 
       - name: Create local.properties
         run: echo "sdk.dir=$HOME/android-sdk" > parent-guard-android/local.properties
 
-      - name: Build Parent APK
-        env:
-          ANDROID_HOME: ${{ github.workspace }}/android-sdk-tmp
-          ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk-tmp
+      - name: Build Parent APK (with full log)
         run: |
           export ANDROID_HOME=$HOME/android-sdk
           export ANDROID_SDK_ROOT=$HOME/android-sdk
           export PATH=$PATH:$HOME/android-sdk/cmdline-tools/latest/bin:$HOME/android-sdk/platform-tools
           cd parent-guard-android
-          gradle :app:assembleDebug --no-daemon 2>&1 | tail -100
+          gradle :app:assembleDebug --no-daemon --stacktrace > /tmp/parent-build.log 2>&1 || {
+            echo "=== BUILD FAILED - last 80 lines ==="
+            tail -80 /tmp/parent-build.log
+            echo "=== END ==="
+            exit 1
+          }
+          echo "=== Parent build succeeded ==="
+          tail -20 /tmp/parent-build.log
 
-      - name: Build Child APK
+      - name: Build Child APK (with full log)
         run: |
           export ANDROID_HOME=$HOME/android-sdk
           export ANDROID_SDK_ROOT=$HOME/android-sdk
           export PATH=$PATH:$HOME/android-sdk/cmdline-tools/latest/bin:$HOME/android-sdk/platform-tools
           cd parent-guard-android
-          gradle :child:assembleDebug --no-daemon 2>&1 | tail -100
+          gradle :child:assembleDebug --no-daemon --stacktrace > /tmp/child-build.log 2>&1 || {
+            echo "=== BUILD FAILED - last 80 lines ==="
+            tail -80 /tmp/child-build.log
+            echo "=== END ==="
+            exit 1
+          }
+          echo "=== Child build succeeded ==="
+          tail -20 /tmp/child-build.log
+
+      - name: Always upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            /tmp/parent-build.log
+            /tmp/child-build.log
+            /tmp/sdkmanager.log
+          if-no-files-found: ignore
 
       - name: Verify APK files
         run: |
