@@ -1,0 +1,58 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Grant execute permission
+        run: chmod +x gradlew || true
+
+      - name: Build Parent APK
+        run: |
+          cd parent-guard-android
+          gradle wrapper --gradle-version 8.5 2>/dev/null || true
+          ./gradlew :app:assembleDebug --no-daemon
+
+      - name: Build Child APK
+        run: |
+          cd parent-guard-android
+          ./gradlew :child:assembleDebug --no-daemon
+
+      - name: Upload Parent APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: parent-guard-parent-debug
+          path: parent-guard-android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload Child APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: parent-guard-child-debug
+          path: parent-guard-android/child/build/outputs/apk/debug/child-debug.apk
+
+      - name: Summary
+        run: |
+          echo "## 📱 APK Build Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **家长端 APK**: parent-guard-parent-debug → 安装在家长的手机上" >> $GITHUB_STEP_SUMMARY
+          echo "- **孩子端 APK**: parent-guard-child-debug → 安装在孩子的手机上" >> $GITHUB_STEP_SUMMARY
+          echo "- **服务器地址**: http://122.51.108.88 (80端口，Nginx反向代理)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⬇️ 在页面底部的 Artifacts 区域下载两个 APK 文件" >> $GITHUB_STEP_SUMMARY

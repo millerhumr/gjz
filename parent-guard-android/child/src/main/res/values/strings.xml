@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">家长助手</string>
+    <string name="accessibility_service_label">家长助手守护服务</string>
+    <string name="accessibility_service_description">用于监控孩子应用使用时长，到达限时自动提醒。</string>
+</resources>
