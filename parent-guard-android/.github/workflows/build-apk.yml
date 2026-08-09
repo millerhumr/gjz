@@ -21,6 +21,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Setup Gradle 8.5
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.5'
+
       - name: Setup Android SDK
         run: |
           ANDROID_SDK_ROOT=$HOME/android-sdk
@@ -32,17 +37,15 @@ jobs:
           export ANDROID_HOME=$ANDROID_SDK_ROOT
           export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
           yes | sdkmanager --licenses > /dev/null 2>&1
-          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0" > /tmp/sdkmanager.log 2>&1
+          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0" 2>&1 | tail -10
+          echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
           echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
 
       - name: Create local.properties
-        run: echo "sdk.dir=$HOME/android-sdk" > parent-guard-android/local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > parent-guard-android/local.properties
 
       - name: Build Parent APK (with full log)
         run: |
-          export ANDROID_HOME=$HOME/android-sdk
-          export ANDROID_SDK_ROOT=$HOME/android-sdk
-          export PATH=$PATH:$HOME/android-sdk/cmdline-tools/latest/bin:$HOME/android-sdk/platform-tools
           cd parent-guard-android
           gradle :app:assembleDebug --no-daemon --stacktrace > /tmp/parent-build.log 2>&1 || {
             echo "=== BUILD FAILED - last 80 lines ==="
@@ -55,9 +58,6 @@ jobs:
 
       - name: Build Child APK (with full log)
         run: |
-          export ANDROID_HOME=$HOME/android-sdk
-          export ANDROID_SDK_ROOT=$HOME/android-sdk
-          export PATH=$PATH:$HOME/android-sdk/cmdline-tools/latest/bin:$HOME/android-sdk/platform-tools
           cd parent-guard-android
           gradle :child:assembleDebug --no-daemon --stacktrace > /tmp/child-build.log 2>&1 || {
             echo "=== BUILD FAILED - last 80 lines ==="
@@ -76,7 +76,6 @@ jobs:
           path: |
             /tmp/parent-build.log
             /tmp/child-build.log
-            /tmp/sdkmanager.log
           if-no-files-found: ignore
 
       - name: Verify APK files
@@ -89,15 +88,15 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: parent-guard-parent-debug
-          path: parent-guard-android/app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
+        path: parent-guard-android/app/build/outputs/apk/debug/app-debug.apk
+        if-no-files-found: error
 
       - name: Upload Child APK
         uses: actions/upload-artifact@v4
         with:
           name: parent-guard-child-debug
-          path: parent-guard-android/child/build/outputs/apk/debug/child-debug.apk
-          if-no-files-found: error
+        path: parent-guard-android/child/build/outputs/apk/debug/child-debug.apk
+        if-no-files-found: error
 
       - name: Summary
         if: always()
