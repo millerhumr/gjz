@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -24,21 +24,21 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
-          android-version: '34'
-          build-tools-version: '34.0.0'
-
-      - name: Make gradlew executable
-        run: chmod +x parent-guard-android/gradlew 2>/dev/null || true
+          cmdline-tools-version: '11.0'
+          packages: |
+            platform-tools
+            platforms;android-34
+            build-tools;34.0.0
+          accept-android-sdk-licenses: true
 
       - name: Create local.properties
-        run: |
-          echo "sdk.dir=$ANDROID_HOME" > parent-guard-android/local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > parent-guard-android/local.properties
 
       - name: Build Parent APK
-        run: cd parent-guard-android && gradle :app:assembleDebug --no-daemon --stacktrace 2>&1 | tail -50
+        run: cd parent-guard-android && gradle :app:assembleDebug --no-daemon 2>&1 | tail -80
 
       - name: Build Child APK
-        run: cd parent-guard-android && gradle :child:assembleDebug --no-daemon --stacktrace 2>&1 | tail -50
+        run: cd parent-guard-android && gradle :child:assembleDebug --no-daemon 2>&1 | tail -80
 
       - name: Verify APK files
         run: |
@@ -68,6 +68,4 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **家长端 APK**: parent-guard-parent-debug → 安装在家长的手机上" >> $GITHUB_STEP_SUMMARY
           echo "- **孩子端 APK**: parent-guard-child-debug → 安装在孩子的手机上" >> $GITHUB_STEP_SUMMARY
-          echo "- **服务器地址**: http://122.51.108.88 (80端口，Nginx反向代理)" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "⬇️ 在页面底部的 Artifacts 区域下载两个 APK 文件" >> $GITHUB_STEP_SUMMARY
+          echo "- **服务器地址**: http://122.51.108.88" >> $GITHUB_STEP_SUMMARY
